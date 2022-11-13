@@ -1,0 +1,356 @@
+body {
+    background-color: rgb(57, 57, 57);
+    min-height: 100vh;
+}
+
+
+#cashTotalContainer {
+    position: relative;
+    text-align: center;
+}
+
+#cashBackground {
+    width: 90%;
+    height: 400px;
+    margin: 5%;
+    opacity: 0.8;
+    background-image: none;
+    object-fit: cover;
+    border-radius: 80px;
+}
+
+.Atext {
+    font-size: 150px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: absolute;
+    top: 100px;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: rgb(227, 227, 227);
+}
+
+.Btext {
+    font-size: 50px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    left: 50px;
+    color: rgb(227, 227, 227);
+    width: 90%
+}
+
+.Ctext {
+    font-size: 80px;
+    font-family: 'Times New Roman', Times, serif;
+    position: relative;
+    text-align: center;
+    color: rgb(227, 227, 227);
+}
+
+.Dtext {
+    font-size: 50px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: relative;
+    left: 20px;
+    color: rgb(0, 0, 0);
+}
+.Etext {
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    position: relative;
+    left: 20px;
+    color: rgb(0, 0, 0);
+}
+
+#totalCashDesc {
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.topMenuItems {
+    top: 15px;
+    position: absolute;
+    height: 120px;
+    width: 120px;
+    transition: 0.2s;
+}
+
+#profileButton {
+    right: 15px;
+    border-radius: 90px;
+}
+
+#settingsButton:active {
+    transform: rotate(45deg);
+}
+
+#profileButton:active {
+    transform: rotate(45deg);
+}
+
+#topBar {
+    background-color: rgb(227, 227, 227);
+    height: 150px;
+}
+
+#title {
+    font-size: 110px;
+    top: 75px;
+    color: rgb(0, 0, 0);
+}
+
+.hsButton {
+    position: relative;
+    text-align: center;
+    height: 200px;
+    width: 45%;
+    margin: 2%;
+    border-radius: 40px;
+    background-color: rgb(227, 227, 227);
+    color: black;
+
+    font-size: 80px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+#sendReceiveA {
+    margin: 5%;
+}
+
+#historyButton {
+    width: 95%;
+    height: 100px;
+    border-radius: 30px;
+}
+
+.hidden {
+    visibility: hidden;
+}
+
+/* send page starts here */
+
+.formBox {
+    position: relative;
+    height: 100px;
+    width: 90%;
+    margin: 5%;
+    font-size: 40px;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.formButton {
+    position: relative;
+    height: 100px;
+    margin: 5%;
+    font-size: 40px;
+    border-radius: 40px;
+    text-align: center;
+    width: 60%;
+    left: 17%;
+}
+
+#sendDoneButton {
+    width: 60%;
+    left: 17%;
+}
+
+.dimmedScreen {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.8;
+    top: 0px;
+}
+
+#confirmationBox {
+    position: absolute;
+    background-color: rgb(135, 135, 135);
+    border-radius: 40px;
+    width: 80%;
+    margin: 10%;
+    height: 500px;
+    top: 400;
+}
+
+.confirmationButton {
+    position: relative;
+    text-align: center;
+    top: 170px;
+    height: 150px;
+    width: 40%;
+    margin: 4%;
+    border-radius: 40px;
+    background-color: rgb(227, 227, 227);
+
+    font-size: 80px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* account creation starts here*/
+#signupDoneButton {
+    width: 60%;
+    left: 17%;
+}
+
+.topMenuTextSwitcher {
+    position: relative;
+    font-size: 40px;
+    left: 10px;
+}
+
+.pageSpanBox {
+    margin: 1%;
+    padding: 20px;
+    position: relative;
+    background-color: rgb(227, 227, 227);
+}
+
+#profilePageLogOut{
+    position: absolute;
+    right: 15px;
+    bottom: 10px;
+    font-size: 20px;
+}
+#familyEditButton{
+    position: relative;
+    height: 50px;
+    left: 32px;
+    top: 10px;
+    font-size: 20px;
+    border-radius: 20px;
+    text-align: center;
+    width: 10%;
+}
+
+/*Alerts on index page*/
+#requestAlerts{
+    position: relative;
+    text-align: center;
+    width: 95%;
+    margin: 2.5%;
+    border-radius: 40px;
+    background-color: rgb(227, 227, 227);
+    color: black;
+    padding: 5px;
+    border-radius: 30px;
+    font-size: 80px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+.alert{
+    position: relative;
+    text-align: center;
+    width: 95%;
+    padding: 10px;
+    left: 1%;
+    border-radius: 40px;
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    
+    border-radius: 30px;
+    font-size: 60px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: rgb(24, 24, 24);
+}
+
+.alertButton{
+    position: relative;
+    text-align: center;
+    top: 5px;
+    height: 100px;
+    width: 30%;
+    margin: 5px;
+    border-radius: 20px;
+    background-color: rgb(227, 227, 227);
+
+    font-size: 40px;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/*family edit page*/
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+td, th {
+    border: 1px solid #dddddd;
+    text-align: left;
+    padding: 8px;
+    font-size: 25px;
+}
+tr:nth-child(even) {
+    background-color: #c2c2c2;
+}
+tr:nth-child(odd) {
+    background-color: #a4a4a4;
+}
+tr:nth-child(1) {
+    background-color: #676767;
+}
+
+table input {
+    width: 100px;
+    height: 100%;
+    background-color: transparent;
+    border-color: transparent;
+    color: rgba(255, 0, 0, 0.478);
+    font-size: 25px;
+}
+::placeholder {
+    color: rgb(0, 0, 0);
+}
+
+#weekDaySelect{
+    font-size: 25px;
+    background-color:#ffffff66;
+    color: rgb(0, 0, 0);
+}
+#frequencyDaySelect {
+    font-size: 25px;
+    background-color:#ffffff66;
+    color: rgb(0, 0, 0);
+}
+
+.familyEditInformative{
+    font-size: 12px;
+}
+
+.familyEditChanged{
+    color: rgba(255, 0, 0, 0.478);
+}
+#familyEditDoneButton {
+    position: relative;
+    border-radius: 50px;
+    width: 40%;
+    height: 50px;
+    left: 17%;
+    font-size: 35px;
+    top: 16px;
+    left: 27%;
+}
+
+/* settings */
+.backImgSelect {  
+    width: 100%;
+    height: 200px; 
+    opacity: 0.7;
+    background-image: none;
+    object-fit: cover;
+    border-radius: 40px;
+}
+.backImgSelectbutton {   
+    background-color: transparent;
+    width: 30%;
+    margin: 1%;
+    background-image: none;
+    object-fit: cover;
+    border-radius: 40px;
+}
+
+.transactionDate {
+    font-size: 20px;
+    text-align: right;
+    margin: 10px;
+}

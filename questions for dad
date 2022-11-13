@@ -1,0 +1,12 @@
+allowance:
+    table:
+        personId
+        frequency(in days)
+        amount
+        nextTimeGiven
+    script is like this:
+    if ($nextTimeGiven < $currentTime) {
+        $nextTimeGiven = $nextTimeGiven + frequency
+    }
+
+    C:\Program Files\Ampps\www\SineCash.local\joiningFamily.php
