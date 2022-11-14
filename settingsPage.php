@@ -1,6 +1,6 @@
 <html>
 <head>
-    <link rel="stylesheet" href="moneyApp.css">
+    <link rel="stylesheet" href="moneyApp.css"> <?php include 'themes.php'; ?>
  
 </head>
 <body>
@@ -56,6 +56,7 @@
             <button class='backImgSelectButton' value="starSky" name="backgroundImg">
                 <img class='backImgSelect' src='images/-starSky.gif'></button>
 
+            <input id='defaultTheme'type="checkbox" value="1" name="defaultTheme"> Default Theme</input>
         </form>
 
 

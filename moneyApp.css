@@ -1,5 +1,4 @@
 body {
-    background-color: rgb(57, 57, 57);
     min-height: 100vh;
 }
 
@@ -98,19 +97,12 @@ body {
     color: rgb(0, 0, 0);
 }
 
-.hsButton {
-    position: relative;
-    text-align: center;
-    height: 200px;
-    width: 45%;
-    margin: 2%;
-    border-radius: 40px;
-    background-color: rgb(227, 227, 227);
-    color: black;
-
-    font-size: 80px;
-    font-family: 'Times New Roman', Times, serif;
-}
+/* .hsButton{
+    box-shadow: -8px -8px 20px rgba(28, 28, 28, 0.172),
+        -8px -8px 20px rgba(28, 28, 28, 0.188),
+        inset -20px -20px 40px rgba(0, 0, 0, 0.262),
+        inset  20px 20px 40px rgba(0, 0, 0, 0.249);
+} */
 
 #sendReceiveA {
     margin: 5%;
@@ -353,4 +345,9 @@ table input {
     font-size: 20px;
     text-align: right;
     margin: 10px;
+}
+
+#defaultTheme{
+    width: 30px;
+    height: 30px;
 }

@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="moneyApp.css?<?php echo time(); ?>">
 
     <?php 
+    include_once 'themes.php';
     include_once 'sessionStart.php';
     include_once 'db.php';
     include_once 'db_allowance.php';
