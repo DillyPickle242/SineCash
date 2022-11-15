@@ -13,7 +13,7 @@
     
     $familyCode = getFamilyCode();
     if (!$familyCode) {
-        header("location: loginpage.html");
+        header("location: loginPage.php");
     }
 
     

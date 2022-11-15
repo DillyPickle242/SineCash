@@ -8,7 +8,7 @@
     <header>
         <div id="topBar">
             <div id="title" class="Atext"> SineCash </div>
-            <a href="loginPage.html" class="topMenuTextSwitcher">Login</a>
+            <a href="loginPage.php" class="topMenuTextSwitcher">Login</a>
         </div>
     </header>
 

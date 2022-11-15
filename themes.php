@@ -16,17 +16,17 @@
     $stmt->execute();
     $defaultTheme = $stmt->get_result()->fetch_assoc()['defaultTheme'];
 
-    if ($defaultTheme == 1) {
-        $pageColor = 'rgb(57, 57, 57);';
-        $backgroundColor = 'rgb(245, 245, 245)';
-        $color = 'black';
-        $shadow = '-8px -8px 20px rgba(28, 28, 28, 0.472),
-        -8px -8px 20px rgba(28, 28, 28, 0.488),
-        inset -20px -20px 40px rgba(0, 0, 0, 0.362),
-        inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-        $font = "'Times New Roman', Times, serif";
-        $size = '80px';
-        print_r("
+    
+    $pageColor = 'rgb(57, 57, 57);';
+    $backgroundColor = 'rgb(245, 245, 245)';
+    $color = 'black';
+    $shadow = '-8px -8px 20px rgba(28, 28, 28, 0.472),
+    -8px -8px 20px rgba(28, 28, 28, 0.488),
+    inset -20px -20px 40px rgba(0, 0, 0, 0.362),
+    inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
+    $font = "'Times New Roman', Times, serif";
+    $size = '80px';
+    print_r("
     html{
     background-color: $pageColor;
     }
@@ -44,9 +44,8 @@
         font-size: $size;
         font-family: $font;
         box-shadow: $shadow;
-}
-");
-    } else {
+}");
+
         $theme = $backgroundImg;
         // hexagons
         // cpu
@@ -215,6 +214,5 @@ html{ background-color: $pageColor; }
     box-shadow: $shadow;
 }
 ");
-    }
     ?>
 </style>
