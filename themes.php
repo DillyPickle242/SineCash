@@ -16,7 +16,7 @@
     $stmt->execute();
     $defaultTheme = $stmt->get_result()->fetch_assoc()['defaultTheme'];
 
-    
+
     $pageColor = 'rgb(57, 57, 57);';
     $backgroundColor = 'rgb(245, 245, 245)';
     $color = 'black';
@@ -46,6 +46,7 @@
         box-shadow: $shadow;
 }");
 
+    if ($defaultTheme == 0) {
         $theme = $backgroundImg;
         // hexagons
         // cpu
@@ -214,5 +215,6 @@ html{ background-color: $pageColor; }
     box-shadow: $shadow;
 }
 ");
+    }
     ?>
 </style>

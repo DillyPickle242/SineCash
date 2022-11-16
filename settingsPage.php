@@ -17,6 +17,8 @@
             </a>
         </div>
     </header>
+    <a href='goalsPage.php'>Goals Page</a>
+
     <div class="btext">
         Home Page Background:
         <form action='settingsSubmit.php' method='post'>
@@ -56,7 +58,7 @@
             <button class='backImgSelectButton' value="starSky" name="backgroundImg">
                 <img class='backImgSelect' src='images/-starSky.gif'></button>
 
-            <input id='defaultTheme'type="checkbox" value="1" name="defaultTheme"> Default Theme</input>
+            <input id='defaultTheme' type="checkbox" value="1" name="defaultTheme"> Default Theme</input>
         </form>
 
 
