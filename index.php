@@ -194,14 +194,14 @@
                 print_r("
                 <form action='requestRespond.php' method='post'>
                 <div class='alert'> 
-                <div>$username is requesting $$amount from you for $note... Would you like to accept? </div>
+                <div>$username is requesting $$amount from you for $note. Would you like to accept? </div>
 
                 <input type='hidden' name='requestedAmount' value='$amount'> </input>
                 <input type='hidden' name='recipientId' value='$recipient'> </input>
                 <input type='hidden' name='transactionId' value='$transactionId'> </input>
 
-                <button class='alertButton' name='button' value='yes'> yes </button>
-                <button class='alertButton' name='button' value='no'> no </button>
+                <button class='alertButton' name='button' value='yes'> Yes </button>
+                <button class='alertButton' name='button' value='no'> No </button>
                 </div>
                 </form>
                 ");
