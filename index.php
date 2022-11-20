@@ -8,6 +8,7 @@
     include_once 'db.php';
     include_once 'db_allowance.php';
     include_once 'parentCheck.php';
+    date_default_timezone_set('America/New_York');
 
     giveAllowances();
     

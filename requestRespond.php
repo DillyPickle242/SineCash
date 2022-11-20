@@ -2,6 +2,7 @@
 include_once 'db.php';
 include_once 'sessionStart.php';
 
+date_default_timezone_set('America/New_York');
 print_r($_POST);
 $responce = $_POST['button'];
 
