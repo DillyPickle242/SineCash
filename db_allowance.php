@@ -30,7 +30,7 @@ function allowanceDefaults($id, $parent)
 
 function giveAllowances()
 {
-    date_default_timezone_set('America/New_York');
+
     global $db;
     include_once 'db_people.php';
 

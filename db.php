@@ -7,5 +7,7 @@ function connect(){
 
 $db = connect();
 
+$db("SET time_zone = '-5:00'")->execute();
+
 mysqli_report(MYSQLI_REPORT_ERROR);
 ?>
