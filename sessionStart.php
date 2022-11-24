@@ -8,4 +8,7 @@ if (!$_SESSION['id'] && !in_array($curPageName, array('loginPage.php', 'signupPa
     exit;
 }
 
+//time set:
+date_default_timezone_set('America/New_York');
+
 ?>
