@@ -5,6 +5,7 @@ print_r($_POST);
 
 include_once 'db.php';
 include_once 'sessionStart.php';
+include_once 'db_people.php';
 
 $sql = "SELECT parent FROM people WHERE ID=?";
 $stmt = $db->prepare($sql);
@@ -24,8 +25,8 @@ $parent = $parentRow['parent'];
 
 if ($parent == "0") {
     // prepare and bind
-    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("iidsss", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest);
+    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("iidsssdd", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
 
     // set parameters and execute
     $sender = $_POST['requestPersonSelect']; //sender is the person you sequest from
@@ -34,6 +35,8 @@ if ($parent == "0") {
     $note = $_POST['requestNote'];
     $fulfilled = 'pending';
     $sendOrRequest = "request";
+    $senderBalance = getTotalCashFromId($sender)['totalCash'];
+    $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
     if ($stmt->execute()){
         header("location: index.php");
     } else {
@@ -55,8 +58,8 @@ if ($parent == "1") {
     }
 
     // prepare and bind
-    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("iidsss", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest);
+    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("iidsssdd", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
 
     // set parameters and execute
     $sender = $_POST['requestPersonSelect'];
@@ -65,6 +68,8 @@ if ($parent == "1") {
     $note = $_POST['requestNote'];
     $fulfilled = 'taken';
     $sendOrRequest = "request";
+    $senderBalance = getTotalCashFromId($sender)['totalCash'];
+    $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
 
     if ($stmt->execute()){
         header("location: index.php");

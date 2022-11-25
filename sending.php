@@ -5,6 +5,7 @@ print_r($_POST);
 
 include_once 'db.php';
 include_once 'sessionStart.php';
+include_once 'db_people.php';
 
 $sql = "SELECT totalCash FROM people WHERE ID=?";
 $stmt = $db->prepare($sql);
@@ -46,8 +47,8 @@ if ($sentCashAmount <= $totalCash) {
     }
 
     // prepare and bind
-    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest) VALUES (?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("iidsss", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest);
+    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt->bind_param("iidsssdd", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
 
     // set parameters and execute
     $sender = $_SESSION['id'];
@@ -56,6 +57,8 @@ if ($sentCashAmount <= $totalCash) {
     $note = $_POST['sendNote'];
     $fulfilled = 'sent';
     $sendOrRequest = "send";
+    $senderBalance = getTotalCashFromId($sender)['totalCash'];
+    $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
 
     if ($stmt->execute()){
         header("location: index.php");

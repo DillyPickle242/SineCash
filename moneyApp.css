@@ -245,12 +245,36 @@ body {
     border-radius: 40px;
     background-color: rgb(255, 255, 255);
     color: rgb(255, 255, 255);
-    
+
     border-radius: 30px;
     font-size: 60px;
     font-family: 'Times New Roman', Times, serif;
     background-color: rgb(24, 24, 24);
 }
+    /* transaction history page */
+    .transactionDate {
+        position: absolute;
+        color: rgb(0, 0, 0);
+        font-size: 30px;
+        margin: 10px;
+        bottom: 0px;
+        right: 10px;
+    }
+    .transactionBalance {
+        position: absolute;
+        color: rgb(0, 0, 0);
+        font-size: 30px;
+        margin: 10px;
+        bottom: 0px;
+        left: 10px;
+    }
+
+    .exDetails {
+        background-color: #ffffff55;
+        width: 100%;
+        height: 40px;
+        border-radius: 30px;
+    }
 
 .alertButton{
     position: relative;
@@ -345,12 +369,6 @@ table input {
     background-image: none;
     object-fit: cover;
     border-radius: 40px;
-}
-
-.transactionDate {
-    font-size: 20px;
-    text-align: right;
-    margin: 10px;
 }
 
 #defaultTheme{

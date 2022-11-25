@@ -12,7 +12,7 @@ function getTH(){
     transactionhistory.amount, 
     `time`, fulfilled, 
     transactionhistory.ID AS transaction_ID, 
-    note, sendOrRequest 
+    note, sendOrRequest, senderBalance, receiverBalance
     FROM `transactionhistory`, 
     `people` AS `people_sender`,
     `people` AS `people_recipient` 

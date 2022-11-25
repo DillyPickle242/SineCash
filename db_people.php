@@ -44,6 +44,15 @@ function getNameFromId($id)
     return $stmt->get_result()->fetch_assoc();
 }
 
+function getTotalCashFromId($id) {
+    global $db;
+    $sql = "SELECT totalCash FROM people WHERE ID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_assoc();
+}
+
 
 function updateAllowancePeople($allowAmount, $id)
 {

@@ -1,7 +1,7 @@
 <?php 
 include_once 'db.php';
 include_once 'sessionStart.php';
-
+include_once 'db_people.php';
 
 print_r($_POST);
 $responce = $_POST['button'];
@@ -49,11 +49,14 @@ if ($responce == 'yes'){
             print("error: ".$db->error);
         }
         
-        //setting transaction to sent
-        $stmt = $db->prepare("UPDATE `transactionhistory` SET `fulfilled` = 'sent' WHERE `transactionhistory`.`ID` = ?;");
-        $stmt->bind_param("i", $transactionId);
+    //setting transaction to sent
+        $stmt = $db->prepare("UPDATE `transactionhistory` SET `fulfilled` = 'sent', `senderBalance` = ?, `receiverBalance` = ? WHERE `transactionhistory`.`ID` = ?;");
+        $stmt->bind_param("ddi", $senderBalance, $receiverBalance, $transactionId);
 
         $transactionId = $_POST['transactionId'];
+        $senderBalance = getTotalCashFromId($_SESSION['id'])['totalCash'];
+        $receiverBalance = getTotalCashFromId($_POST['recipientId'])['totalCash'];
+
         if ($stmt->execute()){
             header("location: index.php");
         } else {
