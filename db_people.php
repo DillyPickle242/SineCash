@@ -53,6 +53,15 @@ function getTotalCashFromId($id) {
     return $stmt->get_result()->fetch_assoc();
 }
 
+function parentFromId($id){
+    global $db;
+    $sql = "SELECT parent FROM people WHERE ID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_assoc();
+}
+
 
 function updateAllowancePeople($allowAmount, $id)
 {
