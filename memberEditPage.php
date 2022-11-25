@@ -35,7 +35,7 @@
         } else {
             print_r("<div class='Etext'>$username's account</div>");
         }
-        print_r("<form action='memberTHPage.php' method='post'> <button name='id' value='$_POST[id]' class='Etext'> Transaction History </div> </form>");
+        print_r("<form action='memberTHPage.php' method='post'> <button name='id' value='$_POST[id]' class='Etext' id='memberTHbutton'> Transaction History </div> </form>");
 
         ?>
     </div>

@@ -81,7 +81,7 @@
                             $text = ("Your $$row[amount] request to $row[sender_username] for $row[note] is pending");
                         }
                         if ($row['fulfilled'] == 'taken') {
-                            $text = ("you took $$row[amount] from $row[sender_username] for $row[note]");
+                            $text = ("You took $$row[amount] from $row[sender_username] for $row[note]");
                         }
                     }
                 }
