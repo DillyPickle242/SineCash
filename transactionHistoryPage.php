@@ -21,6 +21,7 @@
         <div id="requestAlerts">
             <?php
             include_once 'getTransactionHistory.php';
+            include_once 'parentCheck.php';
 
             $transactions = getTH();
 
@@ -32,7 +33,11 @@
                 $date = date('F j, Y, g:i a', $Unixdate);
 
                 if ($row['sender_ID'] == $userID) {
-                    $balanceText = $row['senderBalance'];
+                    if ($parent == 0){
+                        $balanceText = "Balance: $$row[senderBalance]";
+                    } else {
+                        $balanceText = ' ';
+                    }
 
                     if ($row['sendOrRequest'] == 'allowance') {
                         $text = ("You received $$row[amount] as your allowance");
@@ -56,7 +61,12 @@
                     }
                 }
                 if ($row['recipient_ID'] == $userID) {
-                    $balanceText = $row['receiverBalance'];
+                    if ($parent == 0){
+                        $balanceText = "Balance: $$row[receiverBalance]";
+                    } else {
+                        $balanceText = ' ';
+                    }
+
                     if ($row['sendOrRequest'] == 'send') {
                         $text = ("$row[sender_username] sent $$row[amount] to you for $row[note]");
                     }
@@ -76,7 +86,7 @@
                     }
                 }
                 if ($text) {
-                    print("<div id='requestAlerts'><div class='alert'>$text <div class='exDetails'><div class='transactionBalance'>Balance: $$balanceText</div> <div class='transactionDate'>$date</div></div></div></div>");
+                    print("<div id='requestAlerts'><div class='alert'>$text <div class='exDetails'><div class='transactionBalance'>$balanceText</div> <div class='transactionDate'>$date</div></div></div></div>");
                 } else {
                     print_r($row);
                 }
