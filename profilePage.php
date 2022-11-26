@@ -77,7 +77,6 @@
                 print("execute error: " . $db->error);
             }
 
-            print_r("");
             $result = $stmt->get_result();
             while ($row = $result->fetch_assoc()) {
                 $username = $row['username'];
@@ -85,9 +84,23 @@
                 print_r("<button name='id' value='$id' class='Etext'>-$username</button>");
             }
 
+
+            print_r(familyLocked($familyCode)['familyLocked']);
+            if (familyLocked($familyCode)['familyLocked'] == 1){
+                $locked = 'checked';
+            } else {
+                $locked = ' ';
+            }
+
             print_r("
             </form>
         </div>
+        <form action='lockingFamily.php' method='post'>
+            <div id='lockFamilyTitle'>Lock family</div>
+            <input $locked name='lockedCheck' value='yes' type='checkbox' id='lockFamilyCheck'>
+            <div id='lockFamilyDescription'>This will disable people from joining your family</div>
+            <button class='Ftext'>Submit changes</button>
+        </form>
         ");
         }
         ?>

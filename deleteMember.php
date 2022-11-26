@@ -20,7 +20,7 @@
     </header>
     <div class='pageSpanBox'>
         <?php
-        include 'db_people.php';
+        include_once 'db_people.php';
         $username = getNameFromId($_POST['id'])['username'];
 
         print_r("

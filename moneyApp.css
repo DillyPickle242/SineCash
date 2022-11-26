@@ -90,6 +90,7 @@ body {
     transform: rotate(45deg);
 }
 
+
 #topBar {
     background-color: rgb(227, 227, 227);
     height: 150px;
@@ -214,6 +215,21 @@ body {
     bottom: 10px;
     font-size: 20px;
 }
+
+#lockFamilyCheck{
+    width: 40px;
+    height: 40px;
+    
+}
+
+#lockFamilyTitle{
+    font-size: 40px;
+}
+
+#lockFamilyDescription{
+    font-size: 25px;
+}
+
 #familyEditButton{
     position: relative;
     height: 50px;

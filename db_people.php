@@ -1,5 +1,7 @@
 <?php
 
+include_once 'sessionStart.php';
+
 function getChildInfo($familyCode)
 {
     global $db;
@@ -49,6 +51,15 @@ function getTotalCashFromId($id) {
     $sql = "SELECT totalCash FROM people WHERE ID = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("i", $id);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_assoc();
+}
+
+function familyLocked($familyCode){
+    global $db;
+    $sql = "SELECT familyLocked FROM people WHERE familyCode = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("s", $familyCode);
     $stmt->execute();
     return $stmt->get_result()->fetch_assoc();
 }

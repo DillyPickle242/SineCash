@@ -1,6 +1,6 @@
 <?php
-include 'db.php';
-include 'parentCheck.php';
+include_once 'db.php';
+include_once 'parentCheck.php';
 if ($parent = 1){
     //delete person
 $stmt = $db->prepare("DELETE FROM people WHERE `people`.`ID` = ?;");
