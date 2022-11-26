@@ -17,7 +17,6 @@
             </a>
         </div>
     </header>
-    <a href='goalsPage.php'>Goals Page</a>
 
     <div class="btext">
         Home Page Background:

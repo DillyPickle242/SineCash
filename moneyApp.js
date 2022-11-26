@@ -2,13 +2,13 @@
 const sendDoneButton = document.getElementById("sendDoneButton")
 if (sendDoneButton) {
     sendForm.addEventListener('submit', (event) => {
-        if (!event.submitter.dataset["submit"]){
+        if (!event.submitter.dataset["submit"]) {
             event.preventDefault()
         }
 
         if (document.getElementById('sendCashAmount').value && document.getElementById('sendNote').value) {
-            var personSelect = document.getElementById( "sendPersonSelect" )
-            if(personSelect.options[ personSelect.selectedIndex ].value != "?null"){ 
+            var personSelect = document.getElementById("sendPersonSelect")
+            if (personSelect.options[personSelect.selectedIndex].value != "?null") {
                 document.getElementById("confirmation").classList.remove("hidden")
                 document.getElementById('sendConfirm').innerHTML = "Are you sure you'd like to send $" + document.getElementById('sendCashAmount').value + " to " + document.getElementById("sendPersonSelect").options[document.getElementById("sendPersonSelect").selectedIndex].text + " for " + document.getElementById('sendNote').value + "?"
             } else {
@@ -33,13 +33,13 @@ if (sendDoneButton) {
 const requestDoneButton = document.getElementById("requestDoneButton")
 if (requestDoneButton) {
     requestForm.addEventListener('submit', (event) => {
-        if (!event.submitter.dataset["submit"]){
+        if (!event.submitter.dataset["submit"]) {
             event.preventDefault()
         }
 
         if (document.getElementById('requestCashAmount').value && document.getElementById('requestNote').value) {
-            var personSelect = document.getElementById( "requestPersonSelect" )
-            if(personSelect.options[ personSelect.selectedIndex ].value != "?null"){
+            var personSelect = document.getElementById("requestPersonSelect")
+            if (personSelect.options[personSelect.selectedIndex].value != "?null") {
                 document.getElementById("confirmation").classList.remove("hidden")
                 document.getElementById('requestConfirm').innerHTML = "Are you sure you'd like to request $" + document.getElementById('requestCashAmount').value + " from " + document.getElementById("requestPersonSelect").options[document.getElementById("requestPersonSelect").selectedIndex].text + " for " + document.getElementById('requestNote').value + "?"
             } else {
@@ -76,12 +76,22 @@ if (signupForm) {
 }
 
 //family edit page
-if(document.getElementsByClassName('familyEditDOW')){
-    
-    Array.from(document.getElementsByClassName('familyEditDOW')).forEach(selectEl =>{
-        selectEl.addEventListener('change',() => {
+if (document.getElementsByClassName('familyEditDOW')) {
+
+    Array.from(document.getElementsByClassName('familyEditDOW')).forEach(selectEl => {
+        selectEl.addEventListener('change', () => {
             selectEl.classList.add('familyEditChanged')
         })
     })
 
+}
+
+//transaction history page
+if (document.getElementById('filterIcon')) {
+
+    document.getElementById("filterIcon").addEventListener('click', (event) => {
+        document.getElementById("filtersContainer").classList.toggle("hidden")
+        document.getElementById("filterIcon").classList.toggle("open")
+        document.getElementById("filterIcon").classList.toggle("closed")
+    })
 }

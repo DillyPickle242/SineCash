@@ -50,7 +50,7 @@ if ($responce == 'yes'){
         }
         
     //setting transaction to sent
-        $stmt = $db->prepare("UPDATE `transactionhistory` SET `fulfilled` = 'sent', `senderBalance` = ?, `receiverBalance` = ? WHERE `transactionhistory`.`ID` = ?;");
+        $stmt = $db->prepare("UPDATE `transactionhistory` SET `fulfilled` = 'sent', `senderBalance` = ?, `receiverBalance` = ?, `time` = NOW() WHERE `transactionhistory`.`ID` = ?;");
         $stmt->bind_param("ddi", $senderBalance, $receiverBalance, $transactionId);
 
         $transactionId = $_POST['transactionId'];
@@ -71,7 +71,7 @@ if ($responce == 'yes'){
 } 
 if($responce == 'no') {
     //setting transaction to declined
-    $stmt = $db->prepare("UPDATE `transactionhistory` SET `fulfilled` = 'declined' WHERE `transactionhistory`.`ID` = ?;");
+    $stmt = $db->prepare("UPDATE `transactionhistory` SET `fulfilled` = 'declined', `time` = NOW() WHERE `transactionhistory`.`ID` = ?;");
     $stmt->bind_param("i", $transactionId);
 
     $transactionId = $_POST['transactionId'];

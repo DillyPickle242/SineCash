@@ -18,13 +18,42 @@
                 <div id="title" class="Atext"> SineCash </div>
             </a>
         </div>
+
+        <img src='images/filterIcon.png' id='filterIcon' class='closed'>
+        <div id='filtersContainer' class='hidden'>
+            <div class='Etext' id='filtersTitle'>Filters</div>
+            <div id='filtersArea'>
+                <form action='memberTHpage.php' method='post'>
+                    <label class="container">Send
+                        <input type="radio" name='transactionType' value="Send">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Request
+                        <input type="radio" name='transactionType' value="Request">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Allowance
+                        <input type="radio" name='transactionType' value="Allowance">
+                        <span class="checkmark"></span>
+                    </label>
+
+                    <button name='id' value="<?php print_r($_POST['id']); ?>" id='filterSubmit'>Filter</button>
+                </form>
+            </div>
+        </div>
+
         <div id="requestAlerts">
             <?php
             include_once 'getMemberTH.php';
             include_once 'parentCheck.php';
             include_once 'db_people.php';
 
-            $transactions = getTH($_POST['id']);
+            if (!isset($_POST['transactionType'])) {
+                $transactions = getTH($_POST['id'],'no', ' ');
+            } else {
+                $transactions = getTH($_POST['id'],'yes', $_POST['transactionType']);
+            }
+
             $userID = $_POST['id'];
             $memberUsername = getNameFromId($_POST['id'])['username'];
 
@@ -34,7 +63,7 @@
                 $date = date('F j, Y, g:i a', $Unixdate);
 
                 if ($row['sender_ID'] == $userID) {
-                        $balanceText = "$memberUsername's balance: $$row[senderBalance]";
+                    $balanceText = "$memberUsername's balance: $$row[senderBalance]";
                     if ($row['sendOrRequest'] == 'allowance') {
                         $text = ("$memberUsername received $$row[amount] as their allowance");
                     }
