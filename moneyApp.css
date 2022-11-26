@@ -510,3 +510,9 @@ table input {
     border: 0px;
 }
 
+#memberDeleteButton{
+    font-size: 50px;
+    color: black;
+    background-color: red;
+}
+
