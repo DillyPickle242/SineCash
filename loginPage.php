@@ -16,13 +16,13 @@
         <div class="Ctext">Login</div>
         <div>
             <div class="Btext">
-            please enter your username
+            Please enter your first name
             </div>
             <input name="usernameLogin" id="usernameLogin" class="formBox">
         </div>
         <div>
             <div class="Btext">
-            please enter your password
+            Please enter your password
             </div>
             <input type="password" name="passwordLogin" id="passwordLogin" class="formBox">
         </div>
