@@ -1,75 +1,16 @@
 <?php
-
-
-print_r($_POST);
-
-include_once 'db.php';
 include_once 'sessionStart.php';
 include_once 'db_people.php';
-include_once 'mail.php';
 
-$sql = "SELECT totalCash FROM people WHERE ID=?";
-$stmt = $db->prepare($sql);
-if (!$stmt){
-    print("error: ".$db->error);
-}
-$stmt->bind_param("i", $id);
-$id = $_SESSION['id'];
+$sender = $_SESSION['id'];
+$recipient = $_POST['sendPersonSelect'];
+$amount = $_POST['sendCashAmount'];
+$sendOrRequest = "send";
+$note = $_POST['sendNote'];
+$fulfilled = 'sent';
+$response = ' ';
+$transationId = ' ';
 
-$stmt->execute();
-$result = $stmt->get_result();
-$cashRow = $result->fetch_assoc(); //row = totalCash array
-$totalCash = $cashRow['totalCash'];  
+transaction($sender, $recipient, $amount, $sendOrRequest, $note, $fulfilled, $response, $transationId);
+//header("location: index.php");
 
-$sentCashAmount = $_POST['sendCashAmount'];
-
-if ($sentCashAmount <= $totalCash) {
-    // prepare and bind
-    $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash` + ? WHERE `people`.`id` = ?;");
-    $stmt->bind_param("di", $sentCashAmount, $id);
-
-    // set parameters and execute
-    $sentCashAmount = $_POST['sendCashAmount'];
-    $id = $_POST['sendPersonSelect'];
-    $sendNote = $_POST['sendNote'];
-    if (!$stmt->execute()){
-        print("error: ".$db->error);
-    }
-
-    $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash` - ? WHERE `people`.`id` = ?;");
-    $stmt->bind_param("di", $sentCashAmount, $id);
-
-    $sentCashAmount = $_POST['sendCashAmount'];
-    $id = $_SESSION['id'];
-    if ($stmt->execute()){
-        //header("location: index.php");
-    } else {
-        print("error: ".$db->error);
-    }
-
-    // prepare and bind
-    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-    $stmt->bind_param("iidsssdd", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
-
-    // set parameters and execute
-    $sender = $_SESSION['id'];
-    $recipient = $_POST['sendPersonSelect'];
-    $amount = $_POST['sendCashAmount'];
-    $note = $_POST['sendNote'];
-    $fulfilled = 'sent';
-    $sendOrRequest = "send";
-    $senderBalance = getTotalCashFromId($sender)['totalCash'];
-    $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
-
-    if ($stmt->execute()){
-        $THid = $stmt->insert_id;
-        email($THid);
-
-        header("location: index.php");
-    } else {
-        print("error: ".$db->error);
-    }
-
-} else {
-    header("location: notEnoughMoney.html");
-}

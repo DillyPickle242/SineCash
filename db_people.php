@@ -1,6 +1,8 @@
 <?php
 
 include_once 'sessionStart.php';
+include_once 'db.php';
+include_once 'mail.php';
 
 function getChildInfo($familyCode)
 {
@@ -46,7 +48,8 @@ function getNameFromId($id)
     return $stmt->get_result()->fetch_assoc();
 }
 
-function getTotalCashFromId($id) {
+function getTotalCashFromId($id)
+{
     global $db;
     $sql = "SELECT totalCash FROM people WHERE ID = ?";
     $stmt = $db->prepare($sql);
@@ -55,7 +58,8 @@ function getTotalCashFromId($id) {
     return $stmt->get_result()->fetch_assoc();
 }
 
-function familyLocked($familyCode){
+function familyLocked($familyCode)
+{
     global $db;
     $sql = "SELECT familyLocked FROM people WHERE familyCode = ?";
     $stmt = $db->prepare($sql);
@@ -64,7 +68,8 @@ function familyLocked($familyCode){
     return $stmt->get_result()->fetch_assoc();
 }
 
-function parentFromId($id){
+function parentFromId($id)
+{
     global $db;
     $sql = "SELECT parent FROM people WHERE ID = ?";
     $stmt = $db->prepare($sql);
@@ -73,7 +78,8 @@ function parentFromId($id){
     return $stmt->get_result()->fetch_assoc();
 }
 
-function emailFromId($id){
+function emailFromId($id)
+{
     global $db;
     $sql = "SELECT email FROM people WHERE ID = ?";
     $stmt = $db->prepare($sql);
@@ -82,31 +88,139 @@ function emailFromId($id){
     return $stmt->get_result()->fetch_assoc()['email'];
 }
 
-function updateAllowancePeople($allowAmount, $id)
+
+function transaction($sender, $recipient, $amount, $sendOrRequest, $note, $fulfilled, $response, $transactionId)
 {
     global $db;
-    include_once 'mail.php';
+    $senderTotalCash = getTotalCashFromId($sender)['totalCash'];
 
-    // changign the recievers cash amount
-    $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash`+? WHERE `people`.`id` = ?;");
-    $stmt->bind_param("di", $allowAmount, $id);
-    if ($stmt->execute()) {
+    //SEND
+    if ($sendOrRequest == 'send' && $amount <= $senderTotalCash) {
+        $db->begin_transaction();
+        try {
+            //adding cash to the receiver
+            $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash` + ? WHERE `people`.`id` = ?;");
+            $stmt->bind_param("di", $amount, $recipient);
+            $stmt->execute();
 
-        // setting transaction history
-        $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("iidsss", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
+            //removing cash from sender
+            $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash` - ? WHERE `people`.`id` = ?;");
+            $stmt->bind_param("di", $amount, $sender);
+            $stmt->execute();
 
-        $sender = $id;
-        $recipient = $id;
-        $amount = $allowAmount;
-        $note = 'your allowance';
-        $fulfilled = 'sent';
-        $sendOrRequest = "allowance";
-        $senderBalance = 0;
-        $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
+            //setting transaction history
+            $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iidsssdd", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
+            $fulfilled = 'sent';
+            $senderBalance = getTotalCashFromId($sender)['totalCash'];
+            $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
+            $stmt->execute();
+            //sending email based on transactionHistory
+            $THid = $stmt->insert_id;
+            email($THid);
 
-        $stmt->execute();
-        $THid = $stmt->insert_id;
-        email($THid);
+            $db->commit();
+        } catch (mysqli_sql_exception $exception) {
+            $db->rollback();
+            throw $exception;
+        }
+    } else if ($sendOrRequest == 'send' && $amount > $senderTotalCash){
+        header("location: notEnoughMoney.html");
+    }
+
+
+    //REQUEST
+    //brand new request
+    if ($sendOrRequest == 'request' && $fulfilled == 'new' && parentFromId($recipient)['parent'] == '0') {
+        $db->begin_transaction();
+        try {
+            //setting transaction history
+            $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iidsssdd", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
+            $fulfilled = 'pending';
+            $senderBalance = getTotalCashFromId($sender)['totalCash'];
+            $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
+            $stmt->execute();
+            //sending email based on transactionHistory
+            $THid = $stmt->insert_id;
+            email($THid);
+
+            $db->commit();
+        } catch (mysqli_sql_exception $exception) {
+            $db->rollback();
+            throw $exception;
+        }
+
+        //request response
+    } else if ($sendOrRequest == 'request' && $fulfilled == 'pending') {
+        //for yes
+        if ($response == 'yes') {
+            if ($amount <= $senderTotalCash) {
+                $db->begin_transaction();
+                try {
+                    //giving the person their money:
+                    $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash` + ? WHERE `people`.`ID` = ?;");
+                    $stmt->bind_param("di", $amount, $recipient);
+                    $stmt->execute();
+
+                    //taking away your money
+                    $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash` - ? WHERE `people`.`id` = ?;");
+                    $stmt->bind_param("di", $amount, $sender);
+                    $stmt->execute();
+
+                    //setting transaction to sent
+                    $stmt = $db->prepare("UPDATE `transactionhistory` SET `fulfilled` = 'sent', `senderBalance` = ?, `receiverBalance` = ?, `time` = NOW() WHERE `transactionhistory`.`ID` = ?;");
+                    $stmt->bind_param("ddi", $senderBalance, $receiverBalance, $transactionId);
+                    $senderBalance = getTotalCashFromId($_SESSION['id'])['totalCash'];
+                    $receiverBalance = getTotalCashFromId($_POST['recipientId'])['totalCash'];
+                    $stmt->execute();
+
+                    email($_POST['transactionId']);
+                    $db->commit();
+                } catch (mysqli_sql_exception $exception) {
+                    $db->rollback();
+                    throw $exception;
+                }
+            } else if ($sendOrRequest == 'request' && $amount > $senderTotalCash && $fulfilled == 'pending'){
+                header("location: notEnoughMoney.html");
+            }
+        }
+        //for no
+        if ($response == 'no') {
+            //setting transaction to declined
+            $stmt = $db->prepare("UPDATE `transactionhistory` SET `fulfilled` = 'declined', senderBalance = ?, receiverBalance = ?,  `time` = NOW() WHERE `transactionhistory`.`ID` = ?;");
+            $stmt->bind_param("ddi", $senderBalance, $receiverBalance, $transactionId);
+            $senderBalance = getTotalCashFromId($sender)['totalCash'];
+            $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
+            if(!$stmt->execute()){
+                print("error: " . $db->error);
+            }
+            email($transactionId);
+        }
+        //if requester is a parent
+    } else if ($sendOrRequest == 'request' && $fulfilled == 'new' && parentFromId($recipient)['parent'] == '1') {
+        $db->begin_transaction();
+        try {
+            //removing cash from child
+            $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash` - ? WHERE `people`.`id` = ?;");
+            $stmt->bind_param("di", $amount, $sender);
+            $stmt->execute();
+
+            //setting transaction history
+            $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("iidsssdd", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
+            $fulfilled = 'taken';
+            $senderBalance = getTotalCashFromId($sender)['totalCash'];
+            $receiverBalance = 0;
+            $stmt->execute();
+            //sending email based on transactionHistory
+            $THid = $stmt->insert_id;
+            email($THid);
+
+            $db->commit();
+        } catch (mysqli_sql_exception $exception) {
+            $db->rollback();
+            throw $exception;
+        }
     }
 }

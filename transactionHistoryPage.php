@@ -94,7 +94,9 @@
                 } else {
                     $balanceText = ' ';
                 }
-
+                if ($row['sendOrRequest'] == 'allowance') {
+                    $text = ("You received $$row[amount] as your allowance");
+                }
                 if ($row['sendOrRequest'] == 'send') {
                     $text = ("$row[sender_username] sent $$row[amount] to you for $row[note]");
                 }

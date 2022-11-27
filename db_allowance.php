@@ -44,24 +44,47 @@ function giveAllowances()
     foreach ($rows as $row) {
         $allowFrequency = $row['frequency'];
         $allowAmount = $row['amount'];
-        $allowNextTimeGiven = $row['nextTimeGiven'];
         $id = $row['ID'];
 
-        if($allowFrequency > 0){
-            if($allowAmount > 0){
-                updateAllowancePeople($allowAmount, $id);
-                updateAllowanceNTS($allowFrequency,$id);
+        if ($allowFrequency > 0) {
+            if ($allowAmount > 0) {
+                include_once 'mail.php';
+
+                $db->begin_transaction();
+                try {
+                    // changign the recievers cash amount
+                    $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash`+? WHERE `people`.`id` = ?;");
+                    $stmt->bind_param("di", $allowAmount, $id);
+                    $stmt->execute();
+
+                    // setting transaction history
+                    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+                    $stmt->bind_param("iidsssdd", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
+
+                    $sender = $id;
+                    $recipient = $id;
+                    $amount = $allowAmount;
+                    $note = 'your allowance';
+                    $fulfilled = 'sent';
+                    $sendOrRequest = "allowance";
+                    $senderBalance = 0;
+                    $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
+
+                    $stmt->execute();
+                    $THid = $stmt->insert_id;
+                    email($THid);
+
+                    $stmt = $db->prepare("UPDATE allowance SET nextTimeGiven = nextTimeGiven + ? WHERE ID = ?;");
+                    $stmt->bind_param("ii", $unixFrequency, $id);
+                    $unixFrequency = $allowFrequency * 60 * 60 * 24;
+                    $stmt->execute();
+
+                    $db->commit();
+                } catch (mysqli_sql_exception $exception) {
+                    $db->rollback();
+                    throw $exception;
+                }
             }
-        } 
+        }
     }
-}
-
-function updateAllowanceNTS($allowFrequency,$id){
-    global $db;
-
-    $stmt = $db->prepare("UPDATE allowance SET nextTimeGiven = nextTimeGiven + ? WHERE ID = ?;");
-    $stmt->bind_param("ii", $unixFrequency, $id);
-    $unixFrequency = $allowFrequency * 60 * 60 * 24;
-
-    $stmt->execute();
 }

@@ -55,6 +55,9 @@ function email($transactionId){
         }
     }
     if ($recipient == $recipient) {
+        if ($row['sendOrRequest'] == 'allowance') {
+            $recipientSubject = ("You received $$amount as your allowance");
+        }
         if ($sendOrRequest == 'send') {
             $recipientSubject = ("$senderUsername sent $$amount to you for '$note'");
         }
@@ -73,9 +76,9 @@ function email($transactionId){
             }
         }
     }
-    
+
     //mail sender
-    if ($senderParent == 0){
+    if ($senderParent == 0 && $sendOrRequest != 'allowance'){
         $senderText = "Hello $senderUsername, $senderSubject and your total cash is now $$senderBalance. Visit https://sinecash.fm7.net/ to get more info";
     } else {
         $senderText = "Hello $senderUsername, $senderSubject. Visit https://sinecash.fm7.net/ to get more info";
@@ -93,7 +96,7 @@ function email($transactionId){
     
 
     //mail recipient
-    if ($recipientParent == 0){
+    if ($recipientParent == 0 && $sendOrRequest != 'allowance'){
         $recipientText = "Hello $recipientUsername, $recipientSubject and your total cash is now $$recipientBalance. Visit https://sinecash.fm7.net/ to get more info";
     } else {
         $recipientText = "Hello $recipientUsername, $recipientSubject. Visit https://sinecash.fm7.net/ to get more info";

@@ -196,12 +196,13 @@
                 <div class='alert'> 
                 <div>$username is requesting $$amount from you for $note. Would you like to accept? </div>
 
+                <input type='hidden' name='requestNote' value='$note'> </input>
                 <input type='hidden' name='requestedAmount' value='$amount'> </input>
                 <input type='hidden' name='recipientId' value='$recipient'> </input>
                 <input type='hidden' name='transactionId' value='$transactionId'> </input>
 
-                <button class='alertButton' name='button' value='yes'> Yes </button>
-                <button class='alertButton' name='button' value='no'> No </button>
+                <button class='alertButton' name='response' value='yes'> Yes </button>
+                <button class='alertButton' name='response' value='no'> No </button>
                 </div>
                 </form>
                 ");
