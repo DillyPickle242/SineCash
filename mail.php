@@ -96,11 +96,11 @@ function email($transactionId){
 
     if ($sendOrRequest == 'request'){
         if ($fulfilled != 'sent' && $fulfilled != 'declined'){
-            mail($senderEmail, $senderSubject, $senderText, 'From: sinecash@sinecash.fm7.net');
+            mail($senderEmail, $senderSubject, $senderText, 'From: sinecash@d1.fm7.net');
             print_r("<div>to $senderEmail</div><div>$senderSubject</div><div> $senderText </div>");
         }
     } else if ($sendOrRequest == 'allowance'){
-        mail($senderEmail, $senderSubject, $senderText, 'From: sinecash@sinecash.fm7.net');
+        mail($senderEmail, $senderSubject, $senderText, 'From: sinecash@d1.fm7.net');
         print_r("<div>to $senderEmail</div><div>$senderSubject</div><div> $senderText </div>");
     }
     
@@ -114,11 +114,11 @@ function email($transactionId){
 
     if ($sendOrRequest == 'request'){
         if ($fulfilled == 'sent' or $fulfilled == 'declined'){
-            mail($recipientEmail,$recipientSubject, $recipientText, 'From: sinecash@sinecash.fm7.net');
+            mail($recipientEmail,$recipientSubject, $recipientText, 'From: sinecash@d1.fm7.net');
             print_r("<div>to $recipientEmail</div><div>$recipientSubject</div><div> $recipientText </div>");
         }
     } else if ($sendOrRequest == 'send'){
-        mail($recipientEmail, $recipientSubject, $recipientText, 'From: sinecash@sinecash.fm7.net');
+        mail($recipientEmail, $recipientSubject, $recipientText, 'From: sinecash@d1.fm7.net');
         print_r("<div>to $recipientEmail</div><div>$recipientSubject</div><div> $recipientText </div>");
     }
     
