@@ -73,6 +73,14 @@ function parentFromId($id){
     return $stmt->get_result()->fetch_assoc();
 }
 
+function emailFromId($id){
+    global $db;
+    $sql = "SELECT email FROM people WHERE ID = ?";
+    $stmt = $db->prepare($sql);
+    $stmt->bind_param("i", $id);
+    $stmt->execute();
+    return $stmt->get_result()->fetch_assoc()['email'];
+}
 
 function updateAllowancePeople($allowAmount, $id)
 {
@@ -85,8 +93,8 @@ function updateAllowancePeople($allowAmount, $id)
     if ($stmt->execute()) {
 
         // setting transaction history
-        $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest) VALUES (?, ?, ?, ?, ?, ?)");
-        $stmt->bind_param("iidsss", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest);
+        $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
+        $stmt->bind_param("iidsss", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
 
         $sender = $id;
         $recipient = $id;
@@ -94,6 +102,8 @@ function updateAllowancePeople($allowAmount, $id)
         $note = 'your allowance';
         $fulfilled = 'sent';
         $sendOrRequest = "allowance";
+        $senderBalance = 0;
+        $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
 
         $stmt->execute();
         $THid = $stmt->insert_id;

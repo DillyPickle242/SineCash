@@ -5,17 +5,7 @@ function email($transactionId){
     include_once "db_people.php";
     //email from id
     global $db;
-
-    function emailFromId($id){
-        global $db;
-        $sql = "SELECT email FROM people WHERE ID = ?";
-        $stmt = $db->prepare($sql);
-        $stmt->bind_param("i", $id);
-        $stmt->execute();
-        return $stmt->get_result()->fetch_assoc()['email'];
-    }
     
-
     $sql = "SELECT sender, recipient, amount, note, `time`, fulfilled, sendOrRequest, senderBalance, receiverBalance FROM transactionhistory WHERE ID = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("i", $transactionId);
