@@ -79,6 +79,7 @@ if($responce == 'no') {
 
     $transactionId = $_POST['transactionId'];
     if ($stmt->execute()){
+        email($_POST['transactionId']);
         header("location: index.php");
     } else {
         print("error: ".$db->error);
