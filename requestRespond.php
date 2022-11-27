@@ -58,6 +58,9 @@ if ($responce == 'yes'){
         $receiverBalance = getTotalCashFromId($_POST['recipientId'])['totalCash'];
 
         if ($stmt->execute()){
+            $THid = $stmt->insert_id;
+            email($THid);
+            
             header("location: index.php");
         } else {
             print("error: ".$db->error);

@@ -72,6 +72,9 @@ if ($parent == "1") {
     $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
 
     if ($stmt->execute()){
+        $THid = $stmt->insert_id;
+        email($THid);
+        
         header("location: index.php");
     } else {
         print("error: ".$db->error);
