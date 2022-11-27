@@ -16,8 +16,7 @@ function email($transactionId){
     }
     
 
-    $sql = "SELECT sender, recipient, amount, note, `time`, fulfilled, 
-    sendOrRequest, senderBalance, receiverBalance FROM transactionHistory WHERE ID = ?";
+    $sql = "SELECT sender, recipient, amount, note, `time`, fulfilled, sendOrRequest, senderBalance, receiverBalance FROM transactionhistory WHERE ID = ?";
     $stmt = $db->prepare($sql);
     $stmt->bind_param("i", $transactionId);
     $stmt->execute();
