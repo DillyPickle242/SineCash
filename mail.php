@@ -1,8 +1,6 @@
 <?php
 include_once "db.php";
 
-email(1222);
-
 function email($transactionId){
     include_once "db_people.php";
     //email from id
