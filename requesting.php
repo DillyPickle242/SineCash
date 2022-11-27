@@ -12,7 +12,7 @@ $response = ' ';
 $transationId = ' ';
 
 transaction($sender, $recipient, $amount, $sendOrRequest, $note, $fulfilled, $response, $transationId);
-//header("location: index.php");
+header("location: index.php");
 
 
 ?>

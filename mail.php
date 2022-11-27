@@ -78,7 +78,7 @@ function email($transactionId){
     }
 
     //mail sender
-    if ($senderParent == 0 && $sendOrRequest != 'allowance'){
+    if ($senderParent == 0 ){
         $senderText = "Hello $senderUsername, $senderSubject and your total cash is now $$senderBalance. Visit https://sinecash.fm7.net/ to get more info";
     } else {
         $senderText = "Hello $senderUsername, $senderSubject. Visit https://sinecash.fm7.net/ to get more info";
@@ -87,11 +87,11 @@ function email($transactionId){
     if ($sendOrRequest == 'request'){
         if ($fulfilled != 'sent' && $fulfilled != 'declined'){
             mail($senderEmail, $senderSubject, $senderText, 'From: sinecash@d1.fm7.net');
-            print_r("<div>to $senderEmail</div><div>$senderSubject</div><div> $senderText </div>");
+           //print_r("<div>to $senderEmail</div><div>$senderSubject</div><div> $senderText </div>");
         }
     } else if ($sendOrRequest == 'allowance'){
         mail($senderEmail, $senderSubject, $senderText, 'From: sinecash@d1.fm7.net');
-        print_r("<div>to $senderEmail</div><div>$senderSubject</div><div> $senderText </div>");
+        //print_r("<div>to $senderEmail</div><div>$senderSubject</div><div> $senderText </div>");
     }
     
 
@@ -105,11 +105,11 @@ function email($transactionId){
     if ($sendOrRequest == 'request'){
         if ($fulfilled == 'sent' or $fulfilled == 'declined'){
             mail($recipientEmail,$recipientSubject, $recipientText, 'From: sinecash@d1.fm7.net');
-            print_r("<div>to $recipientEmail</div><div>$recipientSubject</div><div> $recipientText </div>");
+            //print_r("<div>to $recipientEmail</div><div>$recipientSubject</div><div> $recipientText </div>");
         }
     } else if ($sendOrRequest == 'send'){
         mail($recipientEmail, $recipientSubject, $recipientText, 'From: sinecash@d1.fm7.net');
-        print_r("<div>to $recipientEmail</div><div>$recipientSubject</div><div> $recipientText </div>");
+        //print_r("<div>to $recipientEmail</div><div>$recipientSubject</div><div> $recipientText </div>");
     }
     
 

@@ -12,5 +12,5 @@ $response = $_POST['response'];
 $transactionId = $_POST['transactionId'];
 
 transaction($sender, $recipient, $amount, $sendOrRequest, $note, $fulfilled, $response, $transactionId);
-//header("location: index.php");
+header("location: index.php");
 ?>
