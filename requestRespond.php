@@ -2,6 +2,7 @@
 include_once 'db.php';
 include_once 'sessionStart.php';
 include_once 'db_people.php';
+include_once 'mail.php';
 
 print_r($_POST);
 $responce = $_POST['button'];
@@ -58,8 +59,7 @@ if ($responce == 'yes'){
         $receiverBalance = getTotalCashFromId($_POST['recipientId'])['totalCash'];
 
         if ($stmt->execute()){
-            $THid = $stmt->insert_id;
-            email($THid);
+            email($_POST['transactionId']);
             
             header("location: index.php");
         } else {

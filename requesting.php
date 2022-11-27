@@ -6,6 +6,7 @@ print_r($_POST);
 include_once 'db.php';
 include_once 'sessionStart.php';
 include_once 'db_people.php';
+include_once 'mail.php';
 
 $sql = "SELECT parent FROM people WHERE ID=?";
 $stmt = $db->prepare($sql);
@@ -38,6 +39,9 @@ if ($parent == "0") {
     $senderBalance = getTotalCashFromId($sender)['totalCash'];
     $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
     if ($stmt->execute()){
+        $THid = $stmt->insert_id;
+        email($THid);
+        
         header("location: index.php");
     } else {
         print("error: ".$db->error);
@@ -74,7 +78,7 @@ if ($parent == "1") {
     if ($stmt->execute()){
         $THid = $stmt->insert_id;
         email($THid);
-        
+
         header("location: index.php");
     } else {
         print("error: ".$db->error);

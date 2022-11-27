@@ -77,6 +77,7 @@ function parentFromId($id){
 function updateAllowancePeople($allowAmount, $id)
 {
     global $db;
+    include_once 'mail.php';
 
     // changign the recievers cash amount
     $stmt = $db->prepare("UPDATE `people` SET `totalCash` = `totalCash`+? WHERE `people`.`id` = ?;");
@@ -95,5 +96,7 @@ function updateAllowancePeople($allowAmount, $id)
         $sendOrRequest = "allowance";
 
         $stmt->execute();
+        $THid = $stmt->insert_id;
+        email($THid);
     }
 }
