@@ -85,7 +85,6 @@
             }
 
 
-            print_r(familyLocked($familyCode)['familyLocked']);
             if (familyLocked($familyCode)['familyLocked'] == 1){
                 $locked = 'checked';
             } else {
