@@ -45,6 +45,7 @@ function giveAllowances()
         $allowFrequency = $row['frequency'];
         $allowAmount = $row['amount'];
         $id = $row['ID'];
+        $nextTimeGiven = $row['nextTimeGiven'];
 
         if ($allowFrequency > 0) {
             if ($allowAmount > 0) {
@@ -58,8 +59,8 @@ function giveAllowances()
                     $stmt->execute();
 
                     // setting transaction history
-                    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
-                    $stmt->bind_param("iidsssdd", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance);
+                    $stmt = $db->prepare("INSERT INTO transactionhistory (sender, recipient, amount, note, fulfilled, sendOrRequest, senderBalance, receiverBalance, `time`) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    $stmt->bind_param("iidsssdds", $sender, $recipient, $amount, $note, $fulfilled, $sendOrRequest, $senderBalance, $receiverBalance, $time);
 
                     $sender = $id;
                     $recipient = $id;
@@ -69,6 +70,7 @@ function giveAllowances()
                     $sendOrRequest = "allowance";
                     $senderBalance = 0;
                     $receiverBalance = getTotalCashFromId($recipient)['totalCash'];
+                    $time = gmdate("Y-m-d h:i:s", $nextTimeGiven);
 
                     $stmt->execute();
                     $THid = $stmt->insert_id;
