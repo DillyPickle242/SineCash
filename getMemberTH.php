@@ -2,7 +2,7 @@
 include_once 'db.php';
 include_once 'sessionStart.php';
 
-function getTH($id, $filtered,$transactionType){
+function getTH($id, $filtered, $transactionType){
     global $db;
 
     if($filtered == 'no'){
@@ -53,7 +53,7 @@ function getTH($id, $filtered,$transactionType){
         $stmt = $db->prepare($sql);
         $stmt->bind_param("sii",$transactionType ,$id, $id);
         
-        $id = $_SESSION['id'];
+        $id;
         $stmt->execute();
         $result = $stmt->get_result();
         $ret = array();
