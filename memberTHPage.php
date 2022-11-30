@@ -23,7 +23,7 @@
         <div id='filtersContainer' class='hidden'>
             <div class='Etext' id='filtersTitle'>Filters</div>
             <div id='filtersArea'>
-                <form action='memberTHpage.php' method='post'>
+                <form action='memberTHPage.php' method='post'>
                     <label class="container">Send
                         <input type="radio" name='transactionType' value="Send">
                         <span class="checkmark"></span>
