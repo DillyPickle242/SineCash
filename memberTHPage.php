@@ -24,19 +24,30 @@
             <div class='Etext' id='filtersTitle'>Filters</div>
             <div id='filtersArea'>
                 <form action='memberTHPage.php' method='post'>
-                    <label class="container">Send
-                        <input type="radio" name='transactionType' value="Send">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Request
-                        <input type="radio" name='transactionType' value="Request">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="container">Allowance
-                        <input type="radio" name='transactionType' value="Allowance">
-                        <span class="checkmark"></span>
-                    </label>
-
+                    <div>
+                        <label class="container">Send
+                            <input type="radio" name='transactionType' value="Send">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Request
+                            <input type="radio" name='transactionType' value="Request">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="container">Allowance
+                            <input type="radio" name='transactionType' value="Allowance">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                    <div>
+                        <div class="Btext">
+                            Search by person
+                        </div>
+                        <select name="searchID" id="searchID" class="formBox">
+                            <?php include_once 'memberDropDownMenu.php'; 
+                            makeDropDown($_POST['id']);
+                            ?>
+                        </select>
+                    </div>
                     <button name='id' value="<?php print_r($_POST['id']); ?>" id='filterSubmit'>Filter</button>
                 </form>
             </div>
@@ -48,14 +59,24 @@
             include_once 'parentCheck.php';
             include_once 'db_people.php';
 
-            if (!isset($_POST['transactionType'])) {
-                $transactions = getTH($_POST['id'],'no', ' ');
+            if (!$_POST) {
+                $transactions = getTH($_POST['id'], 'no', 'null', 'null');
             } else {
-                $transactions = getTH($_POST['id'],'yes', $_POST['transactionType']);
+                if (!isset($_POST['searchID']) || $_POST['searchID'] == '?null') {
+                    $searchID = $_SESSION['id'];
+                } else {
+                    $searchID = $_POST['searchID'];
+                }
+                if (!isset($_POST['transactionType'])) {
+                    $transactionType = 'null';
+                } else {
+                    $transactionType = $_POST['transactionType'];
+                }
+                $transactions = getTH($_POST['id'], 'yes', $transactionType, $searchID);
             }
 
             $userID = $_POST['id'];
-            $memberUsername = getNameFromId($_POST['id'])['username'];
+            $memberUsername = getNameFromId($userID)['username'];
 
             foreach ($transactions as $row) {
 

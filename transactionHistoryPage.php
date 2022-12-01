@@ -24,19 +24,31 @@
         <div class='Etext' id='filtersTitle'>Filters</div>
         <div id='filtersArea'>
             <form action='transactionHistoryPage.php' method='post'>
-                <label class="container">Send
-                    <input type="radio" name='transactionType' value="Send">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">Request
-                    <input type="radio" name='transactionType' value="Request">
-                    <span class="checkmark"></span>
-                </label>
-                <label class="container">Allowance
-                    <input type="radio" name='transactionType' value="Allowance">
-                    <span class="checkmark"></span>
-                </label>
-
+                <div>
+                    <label class="container">Send
+                        <input type="radio" name='transactionType' value="Send">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Request
+                        <input type="radio" name='transactionType' value="Request">
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="container">Allowance
+                        <input type="radio" name='transactionType' value="Allowance">
+                        <span class="checkmark"></span>
+                    </label>
+                </div>
+                <div>
+                    <div class="Btext">
+                        Search by person
+                    </div>
+                    <select name="searchID" id="searchID" class="formBox">
+                        <?php include_once 'memberDropDownMenu.php'; 
+                        include_once 'sessionStart.php';
+                        makeDropDown($_SESSION['id']);
+                        ?>
+                    </select>
+                </div>
                 <button id='filterSubmit'>Filter</button>
             </form>
         </div>
@@ -47,10 +59,20 @@
         include_once 'getTransactionHistory.php';
         include_once 'parentCheck.php';
 
-        if (!isset($_POST['transactionType'])) {
-            $transactions = getTH('no', ' ');
+        if (!$_POST) {
+            $transactions = getTH('no', 'null', 'null');
         } else {
-            $transactions = getTH('yes', $_POST['transactionType']);
+            if (!isset($_POST['searchID']) || $_POST['searchID'] == '?null') {
+                $searchID = $_SESSION['id'];
+            } else {
+                $searchID = $_POST['searchID'];
+            }
+            if (!isset($_POST['transactionType'])) {
+                $transactionType = 'null';
+            } else {
+                $transactionType = $_POST['transactionType'];
+            }
+            $transactions = getTH('yes', $transactionType, $searchID);
         }
 
         foreach ($transactions as $row) {
