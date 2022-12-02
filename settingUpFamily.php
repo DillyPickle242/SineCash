@@ -1,6 +1,7 @@
 <?php
 include_once 'db.php';
 include_once 'sessionStart.php';
+include_once 'generateFamilyCode.php';
 
 
 $sql = "SELECT familyCode FROM people WHERE ID=?";
@@ -22,16 +23,6 @@ if ($familyCode) {
     exit;
 }
 
-function generateRandomString($length = 4) {
-    $characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-    $charactersLength = strlen($characters);
-    $randomString = '';
-    for ($i = 0; $i < $length; $i++) {
-        $randomString .= $characters[rand(0, $charactersLength - 1)];
-    }
-    return $randomString;
-}
-
 
 // prepare and bind
 $stmt = $db->prepare("UPDATE `people` SET `family` = ?, `parent` = 1, familyCode = ? WHERE `people`.`id` = ?;");
@@ -40,7 +31,7 @@ $stmt->bind_param("ssi", $family, $familyCode, $id);
 // set parameters and execute
 $family = $_POST['familyName'];
 $id = $_SESSION['id'];
-$familyCode = generateRandomString();
+$familyCode = generateFamilyCode();
 print_r($familyCode);
 
 if ($stmt->execute()){
