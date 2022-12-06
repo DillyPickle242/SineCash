@@ -2,6 +2,46 @@ body {
     min-height: 100vh;
 }
 
+.topMessageShown{
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    width: 95%;
+    margin: 2%;
+    height: 125px;
+    z-index: 99;
+    top: 0px;
+    border-radius: 25px;
+
+    text-align: center;
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
+
+    box-shadow: 4px 4px 80px rgb(0, 0, 0),
+        inset -20px -20px 40px rgba(0, 0, 0, 0.262),
+        inset  20px 20px 40px rgba(0, 0, 0, 0.249);
+    transition: 0.25s;
+}
+
+.topMessageHidden{
+    background-color: rgba(109, 109, 109, 0.558);
+    position: absolute;
+    width: 40%;
+    margin: 30%;
+    margin-top: -100px;
+    height: 62px;
+    z-index: 99;
+    top: 0px;
+    border-radius: 25px;
+
+    text-align: center;
+    font-size: 20px;
+
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.439),
+        inset -20px -20px 40px rgba(0, 0, 0, 0.153),
+        inset  20px 20px 40px rgba(0, 0, 0, 0.095);
+    transition: 0.25s;
+}
 
 #cashTotalContainer {
     position: relative;

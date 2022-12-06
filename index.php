@@ -42,6 +42,15 @@
                 
         </div>
     </header>
+    <?php
+    if(isset($_GET['transaction'])){
+        print_r("
+        <div id='topMessage' class='topMessageShown'>
+            Your transaction was succesfully completed!
+        </div>
+        ");
+    }
+    ?>
     <div id="cashTotalContainer">
         <?php 
         //Custom Image
@@ -214,6 +223,6 @@
 
     </div>
 
-    <script src="moneyApp.js<?php echo time(); ?>"></script>
+    <script src="moneyApp.js"></script>
 </body>
 </html>

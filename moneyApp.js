@@ -95,3 +95,16 @@ if (document.getElementById('filterIcon')) {
         document.getElementById("filterIcon").classList.toggle("closed")
     })
 }
+
+//index page 
+if (document.getElementById('topMessage')) {
+    setTimeout(() => {
+        document.getElementById("topMessage").classList.add("topMessageHidden")
+        document.getElementById("topMessage").classList.remove("topMessageShown")
+    }, 3000);
+
+    document.getElementById("topMessage").addEventListener('click', (event) => {
+        document.getElementById("topMessage").classList.add("topMessageHidden")
+        document.getElementById("topMessage").classList.remove("topMessageShown")
+    })
+}
