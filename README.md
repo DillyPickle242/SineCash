@@ -45,7 +45,7 @@ Locking the family: If everyone is already in your family, you can check the 'lo
 **SETTINGS:** <br>
 In the settings page, you can change the theme of sinecash, and your mailing settings. Pick a background you like and you'll have it. If you'd like the default theme, check the default box and then select a background. <br>
 
-NOT IMPLIMENTED YET: To change your mail settings, select your prefered notifications. You can pick all, requests, or none.
+NOT IMPLIMENTED YET: To change your mail settings, select your prefered notifications. You can pick all, requests, or none, then press 'submit changes'.
 <br>
 
 
