@@ -30,18 +30,22 @@ Accepting a request only takes one simple step. On the home page, If someone is 
 <br>
 
 
-**TRANSACTION HISTORY** <br>
+**TRANSACTION HISTORY\** <br>
 By clicking the 'transaction history' button on the home page, you will be taken to a page where you can see ALL of your past transactions. You can also filter by person or transaction type by clicking the filter button in the top right.
 _NOTE: As a parent, you can view your children's transaction history. See the Family Page section for more_
 <br>
 
 
-**FAMILY PAGE** <br>
+**FAMILY PAGE:** <br>
 The family page can be found by clicking the family button in the top right of your screen. If you're a child, not much will be here, just your account name and a log out link. But as a parent, there are a ot of options. <br>
 The family section: In this section, you can see all of the names of the people in your family. To edit their allowance, delete them from the family, or see their transaction history, you can click on their name and you'll be taken to a page where you can see/edit these values. <br>
 Locking the family: If everyone is already in your family, you can check the 'lock family' box and it will disable the ability for people to join your family. This is helpful to provent your kids from entering themselves as parents and giving themselves money. To unlock/lock your family, simply toggle the checkbox to your desired setting, and press submit. 
 <br>
 
-**SETTINGS** <br>
-In the settings page, you can change the theme of sinecash. Pick a background you like and you'll have it. If you'd like the default theme, check the default box and then select a background. 
+**SETTINGS:** <br>
+In the settings page, you can change the theme of sinecash, and your mailing settings. Pick a background you like and you'll have it. If you'd like the default theme, check the default box and then select a background. <br>
+To change your main
 <br>
+
+
+
