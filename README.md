@@ -37,6 +37,11 @@ _NOTE: As a parent, you can view your children's transaction history. See the Fa
 
 
 **FAMILY PAGE** <br>
-The family page can be found by clicking the family button in the top right of your screen. If you're a child, not much will be here, just your account name and a log out link. But as a parent, there are a ot of options.
-The family section: In this section, you can see all of the names of the people in your family. To edit their allowance, delete them from the family, or see their transaction history, you can click on their name and you'll be taken to a page where you can see/edit these values. 
+The family page can be found by clicking the family button in the top right of your screen. If you're a child, not much will be here, just your account name and a log out link. But as a parent, there are a ot of options. <br>
+The family section: In this section, you can see all of the names of the people in your family. To edit their allowance, delete them from the family, or see their transaction history, you can click on their name and you'll be taken to a page where you can see/edit these values. <br>
+Locking the family: If everyone is already in your family, you can check the 'lock family' box and it will disable the ability for people to join your family. This is helpful to provent your kids from entering themselves as parents and giving themselves money. To unlock/lock your family, simply toggle the checkbox to your desired setting, and press submit. 
+<br>
+
+**SETTINGS** <br>
+In the settings page, you can change the theme of sinecash. Pick a background you like and you'll have it. If you'd like the default theme, check the default box and then select a background. 
 <br>
