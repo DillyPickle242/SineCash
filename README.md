@@ -1,4 +1,4 @@
-SineCash is made to be a family IOU tracker. The money in SineCash isn't real, removing the risk of children spending their money on unaproved purchases and also removing the hastle of setting up a bank account for your children. 
+SineCash is made to be a family IOU tracker. The money in SineCash isn't real, removing the risk of children spending their money on unapproved purchases and also removing the hastle of setting up a bank account for your children. 
 <br>
 
 **SETTING UP:** <br>
@@ -29,8 +29,14 @@ _NOTE: As a parent, a child won't have to approve your request, the cash will ju
 Accepting a request only takes one simple step. On the home page, If someone is requesting from you, an alert will appear near the bottom of your screen asking if you'd like to accept the request. You can press 'yes' to send the money or 'no' to decline their request.
 <br>
 
+
 **TRANSACTION HISTORY** <br>
 By clicking the 'transaction history' button on the home page, you will be taken to a page where you can see ALL of your past transactions. You can also filter by person or transaction type by clicking the filter button in the top right.
 _NOTE: As a parent, you can view your children's transaction history. See the Family Page section for more_
 <br>
 
+
+**FAMILY PAGE** <br>
+The family page can be found by clicking the family button in the top right of your screen. If you're a child, not much will be here, just your account name and a log out link. But as a parent, there are a ot of options.
+The family section: In this section, you can see all of the names of the people in your family. To edit their allowance, delete them from the family, or see their transaction history, you can click on their name and you'll be taken to a page where you can see/edit these values. 
+<br>
