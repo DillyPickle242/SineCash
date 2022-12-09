@@ -136,6 +136,11 @@ body {
     height: 150px;
 }
 
+#lockIcon{
+    width:120px;
+    height: 120px;
+}
+
 #title {
     font-size: 110px;
     top: 75px;
