@@ -25,7 +25,7 @@
     inset -20px -20px 40px rgba(0, 0, 0, 0.362),
     inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
     $font = "'Times New Roman', Times, serif";
-    $size = '80px';
+    $size = '70px';
     print_r("
     html{
     background-color: $pageColor;
@@ -36,14 +36,13 @@
         height: 200px;
         width: 45%;
         margin: 2%;
-        border-radius: 80px;
+        border-radius: 70px;
         border-width: 0px;
 
         background-color: $backgroundColor;
         color: $color;
         font-size: $size;
         font-family: $font;
-        box-shadow: $shadow;
 }");
 
     if ($defaultTheme == 0) {
@@ -69,8 +68,8 @@
         -8px -8px 20px rgba(28, 28, 28, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'cpu') {
             $pageColor = 'rgb(89, 103, 128)';
@@ -80,8 +79,8 @@
         -8px -8px 20px rgba(28, 28, 28, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'flower') {
             $pageColor = 'rgb(43, 43, 43)';
@@ -91,8 +90,8 @@
         -8px -8px 20px rgba(28, 28, 28, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'floatShapes') {
             $pageColor = 'rgb(10, 10, 10)';
@@ -102,8 +101,8 @@
         -8px -8px 20px rgba(50, 50, 50, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'moneySign') {
             $pageColor = 'rgb(27, 48, 25)';
@@ -113,8 +112,8 @@
         -8px -8px 20px rgba(50, 50, 50, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'crystalHill') {
             $pageColor = 'rgb(8, 14, 34)';
@@ -124,8 +123,8 @@
         -8px -8px 20px rgba(50, 50, 50, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'floweryField') {
             $pageColor = 'rgb(104,140,167)';
@@ -135,8 +134,8 @@
             -8px -8px 20px rgba(28, 28, 28, 0.188),
             inset -20px -20px 40px rgba(0, 0, 0, 0.262),
             inset  20px 20px 40px rgba(0, 0, 0, 0.249)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'rainy') {
             $pageColor = 'rgb(60, 95, 75)';
@@ -146,8 +145,8 @@
         -8px -8px 20px rgba(28, 28, 28, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'doggieTrain') {
             $pageColor = 'rgb(80, 59, 84)';
@@ -157,8 +156,8 @@
         -8px -8px 20px rgba(28, 28, 28, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'forestLake') {
             $pageColor = 'rgb(21, 55, 45)';
@@ -168,8 +167,8 @@
         -8px -8px 20px rgba(28, 28, 28, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'synthwaveCar') {
             $pageColor = 'rgb(60, 42, 62)';
@@ -179,8 +178,8 @@
         -8px -8px 20px rgba(28, 28, 28, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
         if ($theme == 'starSky') {
             $pageColor = 'rgb(16, 25, 29)';
@@ -190,8 +189,8 @@
         -8px -8px 20px rgba(28, 28, 28, 0.488),
         inset -20px -20px 40px rgba(0, 0, 0, 0.362),
         inset  20px 20px 40px rgba(0, 0, 0, 0.349)';
-            $font = "'Times New Roman', Times, serif";
-            $size = '80px';
+            $font = "Arial, Helvetica, sans-serif";
+            $size = '70px';
         }
 
 
@@ -202,17 +201,15 @@ html{ background-color: $pageColor; }
     position: relative;
     text-align: center;
     height: 200px;
-    width: 45%;
-    margin: 2%;
-    border-radius: 80px;
+    width: 41.4%;
+    margin-left: 5%;
+    border-radius: 40px;
     border-width: 0px;
 
-    background-Image: $backgroundImg;
     background-color: $backgroundColor;
     color: $color;
     font-size: $size;
     font-family: $font;
-    box-shadow: $shadow;
 }
 
 ");

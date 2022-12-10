@@ -108,3 +108,58 @@ if (document.getElementById('topMessage')) {
         document.getElementById("topMessage").classList.remove("topMessageShown")
     })
 }
+
+//navbar
+if (document.getElementById('topBar')) {
+    window.onscroll = function () { scrollFunction('0') };
+
+    menuButton = document.getElementById("menuButton");
+    topBar = document.getElementById("topBar");
+    title = document.getElementById("title");
+    menu = document.getElementById("menu");
+    exitIcon = document.getElementById("exitIcon");
+    dimmedScreen = document.getElementById("dimmedScreen");
+
+    topBar.addEventListener('click', (event) => {
+        scrollFunction('1');
+    })
+    menuButton.addEventListener('click', (event) => {
+        menu.style.left = "0px";
+    })
+    exitIcon.addEventListener('click', (event) => {
+        menu.style.left = "-800px";
+    })
+}
+
+
+function scrollFunction(click) {
+    if (click == '1') {
+        topBar.style.height = "150px";
+        topBar.style.opacity = "1";
+        title.style.fontSize = "110px";
+
+        menuButton.style.width = "120px";
+        menuButton.style.height = "120px";
+        menuButton.style.transform = "rotate(0deg)";
+        menuButton.style.opacity = "1";
+    } else if (document.body.scrollTop > 80 || document.documentElement.scrollTop > 80) {
+        topBar.style.height = "80px";
+        topBar.style.opacity = "0.5";
+        title.style.fontSize = "40px";
+
+        menuButton.style.width = "80px";
+        menuButton.style.height = "80px";
+        menuButton.style.transform = "rotate(90deg)";
+        menuButton.style.opacity = "0";
+    } else {
+        topBar.style.height = "150px";
+        topBar.style.opacity = "1";
+        title.style.fontSize = "110px";
+
+        menuButton.style.width = "120px";
+        menuButton.style.height = "120px";
+        menuButton.style.transform = "rotate(0deg)";
+        menuButton.style.opacity = "1";
+    }
+}
+

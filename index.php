@@ -23,26 +23,7 @@
 
 <body>
     <header>
-        <div id="topBar">
-            <a href="settingsPage.php">
-                <img src="images/settings icon.png" id="settingsButton" class="topMenuItems">
-            </a>
-            <a href="profilePage.php">
-                <img src="images/familyIcon.png" id="profileButton" class="topMenuItems">
-            </a>
-            <a href="index.php">
-                <div id="title" class="Atext"> SineCash </div>
-            </a>
-
-            <?php
-            //crazy sinewaves:
-            // for ($x = 0; $x <=23; $x+=1) {
-            //     print_r("<img src='animated_favicon.gif' class='sine'>");
-            // }
-            ?>
-
-
-        </div>
+        <?php include_once 'header.php'; ?>
     </header>
     <?php
     if (isset($_GET['transaction'])) {
@@ -156,26 +137,26 @@
 
         ?>
         <p class=Atext id="totalCashDesc"> <?php
-            if ($parent == '0') {
-                print_r("Your total cash is:");
-            }
-            if ($parent == '1' && $locked == 'unlocked') {
-                print_r("You have infinite cash! <br> Your family code is:");
-            } else if ($parent == '1' && $locked == 'locked'){
-                print_r("You have infinite cash! <br> ");
-            }
-            ?></p>
+                                            if ($parent == '0') {
+                                                print_r("Your total cash is:");
+                                            }
+                                            if ($parent == '1' && $locked == 'unlocked') {
+                                                print_r("You have infinite cash! <br> Your family code is:");
+                                            } else if ($parent == '1' && $locked == 'locked') {
+                                                print_r("You have infinite cash! <br> ");
+                                            }
+                                            ?></p>
         <p class=Atext id="totalCashNum"> <?php
-            if ($parent == '0') {
-                print_r("$$totalCash");
-            }
-            if ($parent == '1' && $locked == 'unlocked') {
-                print_r("$familyCode");
-            } else if ($parent == '1' && $locked == 'locked'){
-                print_r("<img id='lockIcon' src='images/lockIcon.png'>");
-            }
+                                            if ($parent == '0') {
+                                                print_r("$$totalCash");
+                                            }
+                                            if ($parent == '1' && $locked == 'unlocked') {
+                                                print_r("$familyCode");
+                                            } else if ($parent == '1' && $locked == 'locked') {
+                                                print_r("<img id='lockIcon' src='images/lockIcon.png'>");
+                                            }
 
-            ?> </p>
+                                            ?> </p>
     </div>
     <div id="sendReceiveA">
         <a href="sendPage.php">

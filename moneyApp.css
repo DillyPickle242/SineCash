@@ -1,5 +1,5 @@
 body {
-    min-height: 100vh;
+    min-height: 200vh;
 }
 
 .topMessageShown{
@@ -55,7 +55,7 @@ body {
     opacity: 0.8;
     background-image: none;
     object-fit: cover;
-    border-radius: 80px;
+    border-radius: 40px;
 }
 
 .Atext {
@@ -70,7 +70,7 @@ body {
 
 .Btext {
     font-size: 50px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     position: relative;
     left: 50px;
     color: rgb(227, 227, 227);
@@ -79,7 +79,7 @@ body {
 
 .Ctext {
     font-size: 80px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
     position: relative;
     text-align: center;
     color: rgb(227, 227, 227);
@@ -106,15 +106,55 @@ body {
 
 #totalCashDesc {
     font-size: 40px;
-    font-family: 'Times New Roman', Times, serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .topMenuItems {
-    top: 15px;
-    position: absolute;
+    top: 10%;
+    position: relative;
     height: 120px;
     width: 120px;
-    transition: 0.2s;
+    transition: 0.3s;
+}
+
+#menu{
+    left: -800;
+    top: 0px;
+    position: fixed;
+    height: 100%;
+    width: 800px;
+    background-color: rgb(186, 186, 186);
+    z-index: 3;
+    transition: 0.3s;
+}
+
+.menuItem{
+    width: 100%;
+    position: relative;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-size: 75px;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgb(215, 215, 215);
+    color: rgb(0, 0, 0);
+    border-left: transparent;
+    border-right: transparent;
+    border: transparent;
+}
+
+#menuItemContainer{
+    margin-top: 80px;
+    width: 90%;
+    margin-left: 5%;
+    background-color: rgb(255, 255, 255);
+}
+
+#exitIcon{
+    position: absolute;
+    height: 60px;
+    width: 60px;
+    top: 5px;
+    right: 5px;
 }
 
 #profileButton {
@@ -130,10 +170,28 @@ body {
     transform: rotate(45deg);
 }
 
-
 #topBar {
     background-color: rgb(227, 227, 227);
     height: 150px;
+    width: 99%;
+    left: 0;
+    padding: 0;
+    margin: 0.5%;
+    position: fixed;
+    top: 1px;
+    transition: 0.3s;
+    z-index: 1;
+}
+
+#topBarSpacer{
+    height: 150px;
+    width: 99%;
+    left: 0;
+    padding: 0;
+    margin: 0.5%;
+    margin-bottom: 50px;
+    position: relative;
+    top: 1px;
 }
 
 #lockIcon{
@@ -142,17 +200,13 @@ body {
 }
 
 #title {
+    transition: 0.3s;
     font-size: 110px;
     top: 75px;
     color: rgb(0, 0, 0);
+    top: 50%;
 }
 
-/* .hsButton{
-    box-shadow: -8px -8px 20px rgba(28, 28, 28, 0.172),
-        -8px -8px 20px rgba(28, 28, 28, 0.188),
-        inset -20px -20px 40px rgba(0, 0, 0, 0.262),
-        inset  20px 20px 40px rgba(0, 0, 0, 0.249);
-} */
 
 .extraCashInform{
     width: 100px;
@@ -161,13 +215,14 @@ body {
 }
 
 #sendReceiveA {
-    margin: 5%;
+    width: 100%;
+    margin: 0px;
 }
 
 #historyButton {
-    width: 95%;
+    width: 90%;
     height: 100px;
-    border-radius: 30px;
+    border-radius: 40px;
 }
 
 .hidden {
