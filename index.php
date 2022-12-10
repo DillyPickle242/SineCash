@@ -154,7 +154,7 @@
                                                 print_r("$familyCode");
                                             } else if ($parent == '1' && $locked == 'locked') {
                                                 print_r("<img id='lockIcon' src='images/lockIcon.png'>");
-                                                print_r("<div class='Atext' id='lockedFamilyDesc'> Your family is locked. <br> Unlock it in the family edit page. </div>");
+                                                print_r("<div class='Atext' id='lockedFamilyDesc'> Your family is locked. <br> Unlock it in the <a id='famEditPageLink' href='profilePage.php'>family edit page.</a> </div>");
                                             }
 
                                             ?> </p>
