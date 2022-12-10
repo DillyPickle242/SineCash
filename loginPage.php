@@ -6,10 +6,11 @@
 </head>
 <body>
     <header>
-        <div id="topBar">
+        <div id="topBar" >
             <div id="title" class="Atext"> SineCash </div>
             <a href="signupPage.php" class="topMenuTextSwitcher">Sign Up</a>
         </div>
+        <div id='topBarSpacer'></div>
     </header>
 
     <form id="loginForm" method="post" action="loggingIn.php">

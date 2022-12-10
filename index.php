@@ -136,17 +136,17 @@
 
 
         ?>
-        <p class=Atext id="totalCashDesc"> <?php
-                                            if ($parent == '0') {
-                                                print_r("Your total cash is:");
-                                            }
-                                            if ($parent == '1' && $locked == 'unlocked') {
-                                                print_r("You have infinite cash! <br> Your family code is:");
-                                            } else if ($parent == '1' && $locked == 'locked') {
-                                                print_r("You have infinite cash! <br> ");
-                                            }
-                                            ?></p>
-        <p class=Atext id="totalCashNum"> <?php
+        <p class='Atext' id="totalCashDesc"> <?php
+                                                if ($parent == '0') {
+                                                    print_r("Your total cash is:");
+                                                }
+                                                if ($parent == '1' && $locked == 'unlocked') {
+                                                    print_r("You have infinite cash! <br> Your family code is:");
+                                                } else if ($parent == '1' && $locked == 'locked') {
+                                                    print_r("You have infinite cash!");
+                                                }
+                                                ?></p>
+        <p class='Atext' id="totalCashNum"> <?php
                                             if ($parent == '0') {
                                                 print_r("$$totalCash");
                                             }
@@ -154,6 +154,7 @@
                                                 print_r("$familyCode");
                                             } else if ($parent == '1' && $locked == 'locked') {
                                                 print_r("<img id='lockIcon' src='images/lockIcon.png'>");
+                                                print_r("<div class='Atext' id='lockedFamilyDesc'> Your family is locked. <br> Unlock it in the family edit page. </div>");
                                             }
 
                                             ?> </p>

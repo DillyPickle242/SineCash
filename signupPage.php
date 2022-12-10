@@ -10,6 +10,7 @@
             <div id="title" class="Atext"> SineCash </div>
             <a href="loginPage.php" class="topMenuTextSwitcher">Login</a>
         </div>
+        <div id='topBarSpacer'></div>
     </header>
 
     

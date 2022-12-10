@@ -108,6 +108,12 @@ body {
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
 }
+#lockedFamilyDesc{
+    top: 390px;
+    width: 800px;
+    font-size: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+}
 
 .topMenuItems {
     top: 10%;
