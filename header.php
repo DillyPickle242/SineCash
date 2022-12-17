@@ -16,5 +16,7 @@
         <a href='sendPage.php'><button class='menuItem'>Send</button></a><br>
         <a href='requestPage.php'><button class='menuItem'>Request</button></a><br>
         <a href='transactionHistoryPage.php'><button class='menuItem'>Transaction History</button></a><br>
+        <a href='promiseCards.php'><button class='menuItem'>Promise Cards</button></a><br>
+        <a href='promiseCardCreate.php'><button class='menuItem'>Create a promise card</button></a><br>
     </div>
 </div>

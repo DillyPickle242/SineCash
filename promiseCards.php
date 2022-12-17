@@ -39,7 +39,7 @@
             $description = $row['description'];
             $count = $row['count'];
             $cardId = $row['ID'];
-            if($countId > 1){
+            if($count > 1){
                 print_r("
             <div class='promiseCard'>
             <div class='promiseCardText'>
