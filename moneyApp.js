@@ -163,3 +163,23 @@ function scrollFunction(click) {
     }
 }
 
+// promiseCards
+
+const cards = document.getElementsByClassName('promiseCard')
+Array.from(cards).forEach(card => {
+    card.addEventListener('click', () => {
+        card.classList.toggle('promiseCardFlipped')
+
+        Array.from(card.getElementsByClassName('promiseCardText')).forEach(text => {
+            setTimeout(() => {
+                text.classList.toggle('hidden')
+                Array.from(card.getElementsByClassName('promiseCardBack')).forEach(back => {
+                    back.classList.toggle('hidden')
+                })
+                Array.from(card.getElementsByClassName('promiseCardBackground')).forEach(background => {
+                    background.classList.toggle('hidden')
+                })
+            }, 150);
+        })
+    })
+})

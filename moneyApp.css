@@ -2,7 +2,7 @@ body {
     min-height: 200vh;
 }
 
-.topMessageShown{
+.topMessageShown {
     background-color: rgb(255, 255, 255);
     position: absolute;
     width: 95%;
@@ -19,11 +19,11 @@ body {
 
     box-shadow: 4px 4px 80px rgb(0, 0, 0),
         inset -20px -20px 40px rgba(0, 0, 0, 0.262),
-        inset  20px 20px 40px rgba(0, 0, 0, 0.249);
+        inset 20px 20px 40px rgba(0, 0, 0, 0.249);
     transition: 0.25s;
 }
 
-.topMessageHidden{
+.topMessageHidden {
     background-color: rgba(109, 109, 109, 0.558);
     position: absolute;
     width: 40%;
@@ -39,7 +39,7 @@ body {
 
     box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.439),
         inset -20px -20px 40px rgba(0, 0, 0, 0.153),
-        inset  20px 20px 40px rgba(0, 0, 0, 0.095);
+        inset 20px 20px 40px rgba(0, 0, 0, 0.095);
     transition: 0.25s;
 }
 
@@ -91,6 +91,7 @@ body {
     position: relative;
     color: rgb(0, 0, 0);
 }
+
 .Etext {
     font-size: 50px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
@@ -98,7 +99,7 @@ body {
     color: rgb(0, 0, 0);
 }
 
-.Ftext{
+.Ftext {
     font-size: 40px;
     position: relative;
     color: rgb(0, 0, 0);
@@ -108,13 +109,15 @@ body {
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
 }
-#lockedFamilyDesc{
+
+#lockedFamilyDesc {
     top: 390px;
     width: 800px;
     font-size: 40px;
     font-family: Arial, Helvetica, sans-serif;
 }
-#famEditPageLink{
+
+#famEditPageLink {
     color: rgb(103, 116, 148);
 }
 
@@ -126,7 +129,7 @@ body {
     transition: 0.3s;
 }
 
-#menu{
+#menu {
     left: -800;
     top: 0px;
     position: fixed;
@@ -137,7 +140,7 @@ body {
     transition: 0.3s;
 }
 
-.menuItem{
+.menuItem {
     width: 100%;
     position: relative;
     margin-top: 5px;
@@ -151,14 +154,14 @@ body {
     border: transparent;
 }
 
-#menuItemContainer{
+#menuItemContainer {
     margin-top: 80px;
     width: 90%;
     margin-left: 5%;
     background-color: rgb(255, 255, 255);
 }
 
-#exitIcon{
+#exitIcon {
     position: absolute;
     height: 60px;
     width: 60px;
@@ -192,7 +195,7 @@ body {
     z-index: 1;
 }
 
-#topBarSpacer{
+#topBarSpacer {
     height: 150px;
     width: 99%;
     left: 0;
@@ -203,8 +206,8 @@ body {
     top: 1px;
 }
 
-#lockIcon{
-    width:120px;
+#lockIcon {
+    width: 120px;
     height: 120px;
 }
 
@@ -217,7 +220,7 @@ body {
 }
 
 
-.extraCashInform{
+.extraCashInform {
     width: 100px;
     height: 50px;
     background-color: white;
@@ -321,28 +324,28 @@ body {
     background-color: rgb(227, 227, 227);
 }
 
-#profilePageLogOut{
+#profilePageLogOut {
     position: absolute;
     right: 15px;
     bottom: 10px;
     font-size: 20px;
 }
 
-#lockFamilyCheck{
+#lockFamilyCheck {
     width: 40px;
     height: 40px;
-    
+
 }
 
-#lockFamilyTitle{
+#lockFamilyTitle {
     font-size: 40px;
 }
 
-#lockFamilyDescription{
+#lockFamilyDescription {
     font-size: 25px;
 }
 
-#familyEditButton{
+#familyEditButton {
     position: relative;
     height: 50px;
     left: 32px;
@@ -354,7 +357,7 @@ body {
 }
 
 /*Alerts on index page*/
-#requestAlerts{
+#requestAlerts {
     position: relative;
     text-align: center;
     width: 95%;
@@ -368,7 +371,7 @@ body {
     font-family: 'Times New Roman', Times, serif;
 }
 
-.alert{
+.alert {
     position: relative;
     text-align: center;
     width: 95%;
@@ -382,33 +385,36 @@ body {
     font-size: 65px;
     font-family: 'Times New Roman', Times, serif;
     background-color: rgb(24, 24, 24);
+    overflow: scroll;
 }
-    /* transaction history page */
-    .transactionDate {
-        position: absolute;
-        color: rgb(0, 0, 0);
-        font-size: 30px;
-        margin: 10px;
-        bottom: 0px;
-        right: 10px;
-    }
-    .transactionBalance {
-        position: absolute;
-        color: rgb(0, 0, 0);
-        font-size: 30px;
-        margin: 10px;
-        bottom: 0px;
-        left: 10px;
-    }
 
-    .exDetails {
-        background-color: #ffffff55;
-        width: 100%;
-        height: 40px;
-        border-radius: 30px;
-    }
+/* transaction history page */
+.transactionDate {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    margin: 10px;
+    bottom: 0px;
+    right: 10px;
+}
 
-.alertButton{
+.transactionBalance {
+    position: absolute;
+    color: rgb(0, 0, 0);
+    font-size: 30px;
+    margin: 10px;
+    bottom: 0px;
+    left: 10px;
+}
+
+.exDetails {
+    background-color: #ffffff55;
+    width: 100%;
+    height: 40px;
+    border-radius: 30px;
+}
+
+.alertButton {
     position: relative;
     text-align: center;
     top: 5px;
@@ -421,6 +427,7 @@ body {
     font-size: 40px;
     font-family: 'Times New Roman', Times, serif;
 }
+
 #filtersContainer {
     background-color: rgba(26, 26, 26, 0.982);
     width: 80%;
@@ -430,18 +437,20 @@ body {
     top: 0px;
     z-index: 99;
 }
-#filterIcon.open{
+
+#filterIcon.open {
     position: absolute;
     z-index: 100;
     width: 80px;
     background-color: rgb(255, 255, 255);
     border-radius: 20px;
-    margin-top: -140px;
+    margin-top: -185px;
     margin-left: 20%;
     filter: invert(100%);
     transition: 0.4s;
 }
-#filterIcon.closed{
+
+#filterIcon.closed {
     position: relative;
     z-index: 100;
     width: 80px;
@@ -453,14 +462,16 @@ body {
     margin-top: 10px;
     margin-left: 90%;
 }
-#filtersArea{
+
+#filtersArea {
     position: absolute;
     height: 90%;
-    width:90%;
+    width: 90%;
     top: 150px;
     left: 4%;
 }
-#filtersTitle{
+
+#filtersTitle {
     position: absolute;
     top: 10px;
     left: 110px;
@@ -468,13 +479,13 @@ body {
     font-size: 80px;
 }
 
-.filterLabel{
+.filterLabel {
     font-size: 50px;
     color: rgb(255, 255, 255);
     margin-bottom: 15px;
 }
 
-#filterSubmit{
+#filterSubmit {
     border-radius: 20px;
     font-size: 45px;
     margin: 10px;
@@ -483,74 +494,74 @@ body {
     color: black;
 }
 
-    /* The container */
-    .container {
-        display: block;
-        position: relative;
-        padding-left: 65px;
-        margin-bottom: 25px;
-        cursor: pointer;
-        font-size: 45px;
-        color: rgb(255, 255, 255);
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-    }
-    
-    /* Hide the browser's default checkbox */
-    .container input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-    }
-    
-    /* Create a custom checkbox */
-    .checkmark {
-        position: absolute;
-        top: 0;
-        left: 0;
-        height: 45px;
-        width: 45px;
-        background-color: #eee;
-    }
-    
-    /* On mouse-over, add a grey background color */
-    .container:hover input ~ .checkmark {
-        background-color: #ccc;
-    }
-    
-    /* When the checkbox is checked, add a blue background */
-    .container input:checked ~ .checkmark {
-        background-color: #2196F3;
-    }
-    
-    /* Create the checkmark/indicator (hidden when not checked) */
-    .checkmark:after {
-        content: "";
-        position: absolute;
-        display: none;
-    }
-    
-    /* Show the checkmark when checked */
-    .container input:checked ~ .checkmark:after {
-        display: block;
-    }
-    
-    /* Style the checkmark/indicator */
-    .container .checkmark:after {
-        left: 15px;
-        top: 8px;
-        width: 10px;
-        height: 18px;
-        border: solid white;
-        border-width: 0 3px 3px 0;
-        -webkit-transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        transform: rotate(45deg);
-    }
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 65px;
+    margin-bottom: 25px;
+    cursor: pointer;
+    font-size: 45px;
+    color: rgb(255, 255, 255);
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default checkbox */
+.container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 45px;
+    width: 45px;
+    background-color: #eee;
+}
+
+/* On mouse-over, add a grey background color */
+.container:hover input~.checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.container input:checked~.checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.container input:checked~.checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 15px;
+    top: 8px;
+    width: 10px;
+    height: 18px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
 
 /*family edit page*/
 table input {
@@ -561,28 +572,31 @@ table input {
     color: rgba(255, 0, 0, 0.478);
     font-size: 25px;
 }
+
 ::placeholder {
     color: rgb(0, 0, 0);
 }
 
-#weekDaySelect{
+#weekDaySelect {
     font-size: 25px;
-    background-color:#ffffff66;
-    color: rgb(0, 0, 0);
-}
-#frequencyDaySelect {
-    font-size: 25px;
-    background-color:#ffffff66;
+    background-color: #ffffff66;
     color: rgb(0, 0, 0);
 }
 
-.familyEditInformative{
+#frequencyDaySelect {
+    font-size: 25px;
+    background-color: #ffffff66;
+    color: rgb(0, 0, 0);
+}
+
+.familyEditInformative {
     font-size: 12px;
 }
 
-.familyEditChanged{
+.familyEditChanged {
     color: rgba(255, 0, 0, 0.478);
 }
+
 #familyEditDoneButton {
     position: relative;
     border-radius: 50px;
@@ -595,15 +609,16 @@ table input {
 }
 
 /* settings */
-.backImgSelect {  
+.backImgSelect {
     width: 100%;
-    height: 200px; 
+    height: 200px;
     opacity: 0.7;
     background-image: none;
     object-fit: cover;
     border-radius: 40px;
 }
-.backImgSelectbutton {   
+
+.backImgSelectbutton {
     background-color: transparent;
     width: 30%;
     margin: 1%;
@@ -612,18 +627,18 @@ table input {
     border-radius: 40px;
 }
 
-#defaultTheme{
+#defaultTheme {
     width: 30px;
     height: 30px;
 }
 
-.memberEdit{
+.memberEdit {
     border-radius: 20px;
     font-size: 45px;
     margin: 10px;
 }
 
-#removeFromFamily{
+#removeFromFamily {
     position: absolute;
     right: 20px;
     color: red;
@@ -632,15 +647,155 @@ table input {
     font-size: 20px;
 }
 
-#memberTHbutton{
+#memberTHbutton {
     color: blue;
     text-decoration: underline;
     border: 0px;
 }
 
-#memberDeleteButton{
+#memberDeleteButton {
     font-size: 50px;
     color: black;
     background-color: red;
 }
 
+/* promise card page */
+
+#cardContainer {
+    display: -ms-inline-flexbox;
+    display: -webkit-inline-flex;
+    display: inline-flex;
+    -webkit-flex-direction: row;
+    -ms-flex-direction: row;
+    flex-direction: row;
+    -webkit-flex-wrap: wrap;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    -webkit-justify-content: space-around;
+    -ms-flex-pack: distribute;
+    justify-content: space-around;
+    -webkit-align-content: flex-start;
+    -ms-flex-line-pack: start;
+    align-content: flex-start;
+    -webkit-align-items: flex-start;
+    -ms-flex-align: start;
+    align-items: flex-start;
+}
+
+.promiseCard {
+    text-align: center;
+    width: 920px;
+    margin: 20px;
+    height: 500px;
+    border-radius: 30px;
+    box-shadow:
+        -15px -15px 30px rgba(0, 0, 0, 0.364),
+        15px 15px 30px rgba(0, 0, 0, 0.386),
+        inset -10px -10px 80px rgb(255, 255, 255),
+        inset 10px 10px 80px rgb(255, 255, 255);
+    transition: 0.5s;
+
+    -webkit-order: 0;
+    -ms-flex-order: 0;
+    order: 0;
+    -webkit-flex: 0 1 auto;
+    -ms-flex: 0 1 auto;
+    flex: 0 1 auto;
+    -webkit-align-self: auto;
+    -ms-flex-item-align: auto;
+    align-self: auto;
+}
+
+.promiseCardFlipped {
+    transform: scaleX(-1);
+}
+
+.promiseCardBackground {
+    width: 920px;
+    height: 500px;
+    border-radius: 30px;
+    background-image: none;
+    object-fit: cover;
+    border: black;
+    opacity: 0.8;
+    z-index: 1;
+}
+
+.promiseCardBackgroundBack {
+    margin-top: -500px;
+    transform: scaleX(-1);
+}
+
+.promiseCardText {
+    color: black;
+    position: absolute;
+    z-index: 2;
+    width: 920px;
+    height: 500px;
+    opacity: 0.6;
+    text-shadow:
+        0px 0px 20px rgb(0, 0, 0);
+}
+
+.promiseCardBack {
+    color: black;
+    position: absolute;
+    z-index: 2;
+    width: 920px;
+    height: 500px;
+    opacity: 0.6;
+    text-shadow:
+        0px 0px 20px rgb(0, 0, 0);
+    transform: scaleX(-1);
+}
+
+.promiseCardTitle {
+    font-size: 80px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+.promiseCardDesc {
+    font-family: Arial, Helvetica, sans-serif;
+    z-index: 2;
+    font-size: 30px;
+    margin-top: 20px;
+}
+
+.promiseCardFrom {
+    z-index: 2;
+    position: absolute;
+    bottom: 5px;
+    left: 10px;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.promiseCardCount {
+    z-index: 2;
+    position: absolute;
+    bottom: 5px;
+    right: 10px;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.promiseCardButton {
+    color: black;
+    background-color: transparent;
+    position: absolute;
+    bottom: 40px;
+    width: 400px;
+    left: 260;
+    height: 100px;
+    font-size: 50px;
+    border-color: rgba(0, 0, 0, 0.738);
+    border-radius: 20px;
+    box-shadow: 0px 0px 20px rgb(0, 0, 0),
+        inset 0px 0px 20px rgb(0, 0, 0);
+}
+
+/* creating cards */
+
+#cardDescription {
+    height: 220px;
+}
