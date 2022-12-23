@@ -141,7 +141,9 @@ body {
 }
 
 .menuItem {
-    width: 100%;
+    width: 98%;
+    margin-left: 1%;
+    margin-right: 1%;
     position: relative;
     margin-top: 5px;
     margin-bottom: 5px;
@@ -159,6 +161,14 @@ body {
     width: 90%;
     margin-left: 5%;
     background-color: rgb(255, 255, 255);
+}
+
+.menuGroup{
+    border-width: 2px;
+    margin-top: 20px;
+    margin-bottom: 10px;
+    padding-left: 0px;
+    background-color: rgb(94, 94, 94);
 }
 
 #exitIcon {
