@@ -42,6 +42,11 @@ The family section: In this section, you can see all of the names of the people 
 Locking the family: If everyone is already in your family, you can check the 'lock family' box and it will disable the ability for people to join your family. This is helpful to provent your kids from entering themselves as parents and giving themselves money. To unlock/lock your family, simply toggle the checkbox to your desired setting, and press submit. 
 <br>
 
+**PROMISE CARDS:** <br>
+Promise cards are a sort of IOU built in to sinecash. They are perfect for keeping track of promises, like the name suggests. You can use them as a gift to people, promising someone to take them to an experience or somthing similar. <br>
+To create a promise card, go to the menu and click on "create a promise card" this brings you to a page where you can input a title, description and amount for your promise card, as well as who you are sending it to. As soon as you click "done", the recipient will receive an email and be able to see and use the promise card(s).
+<br>
+
 **SETTINGS:** <br>
 In the settings page, you can change the theme of sinecash, and your mailing settings. Pick a background you like and you'll have it. If you'd like the default theme, check the default box and then select a background. <br>
 
