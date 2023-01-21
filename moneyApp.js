@@ -74,6 +74,17 @@ if (signupForm) {
         }
     })
 }
+    //entering family name
+    const familySetupForm = document.getElementById("familySetup");
+    const familyNameInput = document.getElementById("familyName")
+    if (familySetupForm){
+        familySetupForm.addEventListener('submit', (event) => {
+            if (!familyNameInput.value) {
+                alert("Please enter a family name!")
+                event.preventDefault()
+            }
+        })
+    }
 
 //family edit page
 if (document.getElementsByClassName('familyEditDOW')) {
