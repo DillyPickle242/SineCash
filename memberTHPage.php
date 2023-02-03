@@ -16,15 +16,15 @@
                 <form action='memberTHPage.php' method='post'>
                     <div>
                         <label class="container">Send
-                            <input type="radio" name='transactionType' value="Send">
+                            <input type="radio" name='transactionType' value="send">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">Request
-                            <input type="radio" name='transactionType' value="Request">
+                            <input type="radio" name='transactionType' value="request">
                             <span class="checkmark"></span>
                         </label>
                         <label class="container">Allowance
-                            <input type="radio" name='transactionType' value="Allowance">
+                            <input type="radio" name='transactionType' value="allowance">
                             <span class="checkmark"></span>
                         </label>
                     </div>
@@ -49,11 +49,12 @@
             include_once 'parentCheck.php';
             include_once 'db_people.php';
 
-            if (!$_POST) {
+            if (!isset($_POST['searchID']) && !isset($_POST['transactionType'])) {
                 $transactions = getTH($_POST['id'], 'no', 'null', 'null');
+                // print_r("Unfiltered ");
             } else {
-                if (!isset($_POST['searchID']) || $_POST['searchID'] == '?null') {
-                    $searchID = $_SESSION['id'];
+                if ($_POST['searchID'] == '?null') {
+                    $searchID = $_POST['id'];
                 } else {
                     $searchID = $_POST['searchID'];
                 }
@@ -67,6 +68,8 @@
 
             $userID = $_POST['id'];
             $memberUsername = getNameFromId($userID)['username'];
+            // print_r($transactions);
+            // print_r($_POST);
 
             foreach ($transactions as $row) {
 
