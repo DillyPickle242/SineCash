@@ -10,7 +10,7 @@ if (!$stmt){
 }
 $stmt->bind_param("ss", $username, $password);
 
-$username = $_POST['usernameLogin'];
+$username = trim($_POST['usernameLogin']," ");
 $password = $_POST['passwordLogin'];
 
 $stmt->execute();

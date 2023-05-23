@@ -9,8 +9,12 @@ $stmt->bind_param("sss", $password, $username, $email);
 
 // set parameters and execute
 $password = $_POST['passwordCreate'];
-$username = $_POST['usernameCreate'];
+$username = trim($_POST['usernameCreate']," ");
+print($username);
+print($_POST['usernameCreate']);
+
 $email = $_POST['emailCreate'];
+
 if ($stmt->execute()){
     header("location: parentOrChild.php");
 } else {
