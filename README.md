@@ -1,3 +1,6 @@
+THE SITE: https://SineCash.fm7.net
+
+
 SineCash is made to be a family IOU tracker. The money in SineCash isn't real, removing the risk of children spending their money on unapproved purchases and also removing the hastle of setting up a bank account for your children. 
 <br>
 
