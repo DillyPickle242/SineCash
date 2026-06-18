@@ -134,6 +134,7 @@ html {
     font-weight: 600;
     letter-spacing: 0.5px;
     text-align: center;
+    margin-bottom:10px;
 }
 
 .Ctext {
@@ -152,14 +153,12 @@ html {
 
 .Dtext {
     font-size: 50px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     position: relative;
     color: rgb(0, 0, 0);
 }
 
 .Etext {
     font-size: 50px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     position: relative;
     color: rgb(0, 0, 0);
 }
@@ -770,7 +769,7 @@ button.formbox {
 
 #filtersTitle {
     position: relative;
-    margin: 0;
+    margin-left: 110px;
     margin-bottom: 10px;
     color: rgb(255, 255, 255);
     font-size: 45px;
@@ -792,7 +791,7 @@ button.formbox {
 
 #filtersArea .container {
     background-color: #f3f5fa;
-    border-radius: 18px;
+    border-radius: 60px;
     padding: 16px 20px;
     margin-bottom: 8px;
     display: flex;
@@ -819,7 +818,7 @@ button.formbox {
 #filtersArea select {
     background-color: #f3f5fa;
     border: none;
-    border-radius: 18px;
+    border-radius: 60px;
     padding: 16px 20px;
     font-size: 30px;
     color: #333;
@@ -872,6 +871,10 @@ button.formbox {
     cursor: pointer;
     height: 0;
     width: 0;
+}
+
+.checkmark {
+   opacity: 0;
 }
 
 /* Override for send/request person items - make inputs fill label for mobile touch */
@@ -1148,7 +1151,6 @@ table input {
 
 .promiseCardTitle {
     font-size: 80px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 }
 
 .promiseCardDesc {
