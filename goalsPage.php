@@ -1,6 +1,5 @@
 <html>
 <head>
-    <link rel="stylesheet" href="moneyApp.css"> <?php include 'themes.php'; ?>
  
 </head>
 <body>

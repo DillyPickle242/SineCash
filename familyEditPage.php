@@ -1,6 +1,5 @@
 <html>
 <head>
-    <link rel="stylesheet" href="moneyApp.css"> <?php include 'themes.php'; ?>
     <?php
     include_once 'db.php';
     include_once 'sessionStart.php';

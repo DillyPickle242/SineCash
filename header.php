@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="moneyApp.css?<?php echo time(); ?>">
+
 <div id="topBar">
     <img src="images/menuIcon.png" id="menuButton" class="topMenuItems">
     </a>

@@ -535,6 +535,7 @@ button.formbox {
     height: 120px;
     width: 90%;
     margin: 5%;
+    margin-left:10%;
     font-size: 60px;
     border-radius: 60px;
     text-align: center;
@@ -596,7 +597,6 @@ button.formbox {
 
 #signupDoneButton {
     width: 60%;
-    left: 17%;
 }
 
 .topMenuTextSwitcher {
@@ -945,6 +945,20 @@ button.formbox {
     -webkit-transform: rotate(45deg);
     -ms-transform: rotate(45deg);
     transform: rotate(45deg);
+}
+
+/* Ensure inputs inside person items cover the full label for easy tapping on mobile */
+.requestPersonItem input,
+.sendPersonItem input,
+.requestSelectAllItem input {
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    cursor: pointer;
 }
 
 /*family edit page*/

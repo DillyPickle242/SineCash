@@ -1,7 +1,7 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="moneyApp.css?<?php echo time(); ?>">
+    
 
     <?php
     include_once 'themes.php';
