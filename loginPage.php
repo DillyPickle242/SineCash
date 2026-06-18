@@ -1,7 +1,7 @@
 <html>
 
 <head>
-
+    <link rel="stylesheet" href="moneyApp.css?<?php echo time(); ?>">
 </head>
 <body>
     <header>
