@@ -10,25 +10,25 @@
         <?php include_once 'header.php'; ?>
     </header>
 
-    <form id="sendForm" action="sending.php" method="post">
-        <div>
+    <form id="sendForm" action="sending.php" method="post" class="sendFormContainer">
+        <div class="sendSection">
             <div class="Btext">
-                Please select recipient
+                Who would you like to send to?
             </div>
-            <select name="sendPersonSelect" id="sendPersonSelect" class="formBox">
-                <?php include_once 'memberDropDownMenu.php'; 
+            <div id="sendPersonList" class="sendPersonList">
+                <?php include_once 'memberDropDownMenu.php';
                 include_once 'sessionStart.php';
-                makeDropDown($_SESSION['id']);
+                makeSendCardList($_SESSION['id']);
                 ?>
-            </select>
+            </div>
         </div>
-        <div>
+        <div class="sendSection">
             <div class="Btext">
                 How much would you like to send?
             </div>
             <input name="sendCashAmount" id="sendCashAmount" class="formBox" type="number" step="0.01" min=0.01 max=1000000>
         </div>
-        <div>
+        <div class="sendSection">
             <div class="Btext">
                 Note: for...
             </div>

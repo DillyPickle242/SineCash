@@ -1,62 +1,150 @@
 //sending
 const sendDoneButton = document.getElementById("sendDoneButton")
-if (sendDoneButton) {
+const sendForm = document.getElementById("sendForm")
+if (sendDoneButton && sendForm) {
+    const sendPersonRadios = () => Array.from(document.querySelectorAll('input[name="sendPersonSelect"]'))
+    let sendConfirmed = false
+
+    sendPersonRadios().forEach(radio => {
+        radio.addEventListener('change', () => {
+            sendPersonRadios().forEach(r => {
+                if (r.parentElement) {
+                    r.parentElement.classList.toggle('selected', r.checked)
+                }
+            })
+        })
+    })
+
     sendForm.addEventListener('submit', (event) => {
-        if (!event.submitter.dataset["submit"]) {
-            event.preventDefault()
+        if (sendConfirmed) {
+            sendConfirmed = false
+            return
         }
 
-        if (document.getElementById('sendCashAmount').value && document.getElementById('sendNote').value) {
-            var personSelect = document.getElementById("sendPersonSelect")
-            if (personSelect.options[personSelect.selectedIndex].value != "?null") {
+        event.preventDefault()
+        const amountValue = document.getElementById('sendCashAmount').value
+        const noteValue = document.getElementById('sendNote').value
+        const selectedRadio = document.querySelector('input[name="sendPersonSelect"]:checked')
+
+        if (amountValue && noteValue) {
+            if (selectedRadio) {
+                const selectedName = selectedRadio.parentElement.textContent.trim()
                 document.getElementById("confirmation").classList.remove("hidden")
-                document.getElementById('sendConfirm').innerHTML = "Are you sure you'd like to send $" + document.getElementById('sendCashAmount').value + " to " + document.getElementById("sendPersonSelect").options[document.getElementById("sendPersonSelect").selectedIndex].text + " for " + document.getElementById('sendNote').value + "?"
+                document.getElementById('sendConfirm').innerHTML = "Are you sure you'd like to send $" + amountValue + " to " + selectedName + " for " + noteValue + "?"
             } else {
-                event.preventDefault()
                 alert("Please select who you'd like to send to")
             }
         } else {
-            event.preventDefault()
             alert("Please fill in ALL fields or check that you only inputted numbers in the money field")
         }
     })
     document.getElementById("sendConfirmYes").addEventListener('click', (event) => {
-        document.getElementById('sendCashAmount').value
+        event.preventDefault()
+        sendConfirmed = true
+        document.getElementById("confirmation").classList.add("hidden")
+        sendForm.submit()
     })
     document.getElementById("sendConfirmNo").addEventListener('click', (event) => {
-        document.getElementById("confirmation").classList.add("hidden")
         event.preventDefault()
+        sendConfirmed = false
+        document.getElementById("confirmation").classList.add("hidden")
     })
 }
 
 //requesting
 const requestDoneButton = document.getElementById("requestDoneButton")
-if (requestDoneButton) {
-    requestForm.addEventListener('submit', (event) => {
-        if (!event.submitter.dataset["submit"]) {
-            event.preventDefault()
+const requestForm = document.getElementById("requestForm")
+if (requestDoneButton && requestForm) {
+    const requestSelectAll = document.getElementById("requestSelectAll")
+    const requestCheckboxes = () => Array.from(document.querySelectorAll('input[name="requestPersonSelect[]"]'))
+    let requestConfirmed = false
+
+    const updateSelectAllState = () => {
+        if (!requestSelectAll) return
+        const checkboxes = requestCheckboxes()
+        requestSelectAll.checked = checkboxes.length > 0 && checkboxes.every(checkbox => checkbox.checked)
+    }
+
+    if (requestSelectAll) {
+        requestSelectAll.addEventListener('change', () => {
+            requestCheckboxes().forEach(checkbox => {
+                checkbox.checked = requestSelectAll.checked
+                if (checkbox.parentElement) {
+                    checkbox.parentElement.classList.toggle('selected', checkbox.checked)
+                }
+            })
+            updateSplitSummary()
+        })
+    }
+
+    const splitSummary = document.getElementById('splitSummary')
+
+    const updateSplitSummary = () => {
+        const amountValue = parseFloat(document.getElementById('requestCashAmount').value)
+        const selected = Array.from(document.querySelectorAll('input[name="requestPersonSelect[]"]:checked'))
+        const count = selected.length
+
+        if (count === 0) {
+            splitSummary.textContent = 'Choose people to request from and the amount will be split evenly.'
+            return
         }
 
-        if (document.getElementById('requestCashAmount').value && document.getElementById('requestNote').value) {
-            var personSelect = document.getElementById("requestPersonSelect")
-            if (personSelect.options[personSelect.selectedIndex].value != "?null") {
+        if (!amountValue || amountValue <= 0) {
+            splitSummary.textContent = 'Selected ' + count + ' person' + (count === 1 ? '' : 's') + '. Enter an amount to see each share.'
+            return
+        }
+
+        const splitAmount = (amountValue / count).toFixed(2)
+        splitSummary.textContent = 'Split evenly among ' + count + ' ' + (count === 1 ? 'person' : 'people') + ': $' + splitAmount + ' each.'
+    }
+
+    requestCheckboxes().forEach(checkbox => {
+        checkbox.addEventListener('change', () => {
+            if (checkbox.parentElement) {
+                checkbox.parentElement.classList.toggle('selected', checkbox.checked)
+            }
+            updateSelectAllState()
+            updateSplitSummary()
+        })
+    })
+
+    document.getElementById('requestCashAmount').addEventListener('input', updateSplitSummary)
+
+    requestForm.addEventListener('submit', (event) => {
+        if (requestConfirmed) {
+            requestConfirmed = false
+            return
+        }
+
+        event.preventDefault()
+        const amountValue = document.getElementById('requestCashAmount').value
+        const noteValue = document.getElementById('requestNote').value
+        const selected = Array.from(document.querySelectorAll('input[name="requestPersonSelect[]"]:checked'))
+
+        if (amountValue && noteValue) {
+            if (selected.length > 0) {
+                const selectedNames = selected.map(checkbox => checkbox.parentElement.textContent.trim()).join(', ')
+                const splitAmount = (parseFloat(amountValue) / selected.length).toFixed(2)
                 document.getElementById("confirmation").classList.remove("hidden")
-                document.getElementById('requestConfirm').innerHTML = "Are you sure you'd like to request $" + document.getElementById('requestCashAmount').value + " from " + document.getElementById("requestPersonSelect").options[document.getElementById("requestPersonSelect").selectedIndex].text + " for " + document.getElementById('requestNote').value + "?"
+                document.getElementById('requestConfirm').innerHTML = "Are you sure you'd like to request $" + amountValue + " split evenly ($" + splitAmount + " each) from " + selectedNames + " for " + noteValue + "?"
+                updateSplitSummary()
             } else {
-                event.preventDefault()
-                alert("Please fill the person select field")
+                alert("Please select at least one person to request from")
             }
         } else {
-            event.preventDefault()
             alert("Please fill in ALL fields or check that you only inputted numbers in the money field")
         }
     })
     document.getElementById("requestConfirmYes").addEventListener('click', (event) => {
-        document.getElementById('requestCashAmount').value
+        event.preventDefault()
+        requestConfirmed = true
+        document.getElementById("confirmation").classList.add("hidden")
+        requestForm.submit()
     })
     document.getElementById("requestConfirmNo").addEventListener('click', (event) => {
-        document.getElementById("confirmation").classList.add("hidden")
         event.preventDefault()
+        requestConfirmed = false
+        document.getElementById("confirmation").classList.add("hidden")
     })
 }
 
@@ -104,6 +192,22 @@ if (document.getElementById('filterIcon')) {
         document.getElementById("filtersContainer").classList.toggle("hidden")
         document.getElementById("filterIcon").classList.toggle("open")
         document.getElementById("filterIcon").classList.toggle("closed")
+    })
+
+    // Handle transaction type filter selection styling
+    const transactionTypeRadios = document.querySelectorAll('input[name="transactionType"]')
+    transactionTypeRadios.forEach(radio => {
+        radio.addEventListener('change', () => {
+            transactionTypeRadios.forEach(r => {
+                if (r.parentElement) {
+                    r.parentElement.classList.toggle('selected', r.checked)
+                }
+            })
+        })
+        // Initialize styling on page load
+        if (radio.checked && radio.parentElement) {
+            radio.parentElement.classList.add('selected')
+        }
     })
 }
 

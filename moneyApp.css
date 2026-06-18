@@ -2,65 +2,121 @@ body {
     min-height: 200vh;
 }
 
+html {
+    background-color: rgb(15, 15, 15);
+    font-family: sans-serif;
+}
+
+.hsButton {
+    position: relative;
+    text-align: center;
+    height: 120px;
+    width: 41.4%;
+    margin-left: 5%;
+    border-radius: 60px;
+    border-width: 0px;
+    font-weight: bold;
+    font-size: 60px;
+    background: linear-gradient(135deg, #ffffff 0%, #f0f0f5 100%);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    cursor: pointer;
+    color: rgb(20, 20, 40);
+}
+
+#historyButton {
+    margin-top: 40px;
+    width: 87.8%;
+    margin-left: 5%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+}
+
+#historyButton:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.35);
+}
+
+#familyJoin {
+    margin-top: 200px;
+
+}
+
 .topMessageShown {
+    padding: 35px;
+    box-sizing: border-box;
     background-color: rgb(255, 255, 255);
     position: absolute;
     width: 95%;
     margin: 2%;
-    height: 125px;
+    height: 120px;
     z-index: 99;
     top: 0px;
-    border-radius: 25px;
-
+    border-radius: 60px;
     text-align: center;
     font-size: 40px;
     color: rgb(0, 0, 0);
     font-weight: bolder;
-
-    box-shadow: 4px 4px 80px rgb(0, 0, 0),
-        inset -20px -20px 40px rgba(0, 0, 0, 0.262),
-        inset 20px 20px 40px rgba(0, 0, 0, 0.249);
     transition: 0.25s;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
 .topMessageHidden {
-    background-color: rgba(109, 109, 109, 0.558);
+    padding: 35px;
+    box-sizing: border-box;
+    background-color: rgb(255, 255, 255);
     position: absolute;
-    width: 40%;
-    margin: 30%;
-    margin-top: -100px;
-    height: 62px;
+    width: 95%;
+    margin: 2%;
+    height: 120px;
     z-index: 99;
-    top: 0px;
-    border-radius: 25px;
-
+    top: -150px;
+    border-radius: 60px;
     text-align: center;
-    font-size: 20px;
-
-    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.439),
-        inset -20px -20px 40px rgba(0, 0, 0, 0.153),
-        inset 20px 20px 40px rgba(0, 0, 0, 0.095);
+    font-size: 40px;
+    color: rgb(0, 0, 0);
+    font-weight: bolder;
     transition: 0.25s;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25); 
 }
 
 #cashTotalContainer {
+    height: 400px;
     position: relative;
     text-align: center;
+    border-radius: 60px;
+    margin: 5%;
+    padding: 20px 0;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
+    background-color: rgb(30, 30, 30);
+}
+
+@keyframes shimmerBorder {
+    0%, 100% { box-shadow: inset 0 4px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 40px rgba(57, 255, 20, 0.3); }
+    50% { box-shadow: inset 0 4px 16px rgba(0, 0, 0, 0.3), 0 12px 40px rgba(0, 0, 0, 0.4), 0 0 60px rgba(57, 255, 20, 0.6); }
 }
 
 #cashBackground {
-    width: 90%;
-    height: 400px;
-    margin: 5%;
-    opacity: 0.8;
+    width: 85%;
+    height: 320px;
+    margin: 5% auto;
+    opacity: 0.85;
     background-image: none;
     object-fit: cover;
-    border-radius: 40px;
+    border-radius: 20px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+    transition: all 0.3s ease;
+}
+
+#cashBackground:hover {
+    opacity: 0.95;
+    box-shadow: 0 14px 48px rgba(0, 0, 0, 0.7);
 }
 
 .Atext {
     font-size: 150px;
-    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: Sans-serif;
+    font-weight: bold;
     position: absolute;
     top: 100px;
     left: 50%;
@@ -70,19 +126,29 @@ body {
 
 .Btext {
     font-size: 50px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Sans-serif;
     position: relative;
-    left: 50px;
-    color: rgb(227, 227, 227);
-    width: 90%
+    left: 0;
+    color: rgb(255, 255, 255);
+    width: 100%;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    text-align: center;
 }
 
 .Ctext {
-    font-size: 80px;
-    font-family: Arial, Helvetica, sans-serif;
+    font-size: 100px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, monospace;
     position: relative;
     text-align: center;
-    color: rgb(227, 227, 227);
+    color: rgb(255, 255, 255);
+    font-weight: 800;
+    letter-spacing: 4px;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+    margin: 20px 0;
+    padding: 20px;
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .Dtext {
@@ -135,48 +201,48 @@ body {
     position: fixed;
     height: 100%;
     width: 800px;
-    background-color: rgb(186, 186, 186);
+    background-color: rgb(30, 30, 30);
     z-index: 3;
     transition: 0.3s;
 }
 
 .menuItem {
-    width: 98%;
-    margin-left: 1%;
+    width: 85%;
+    margin-left: 7.5%;
     margin-right: 1%;
     position: relative;
     margin-top: 5px;
     margin-bottom: 5px;
-    font-size: 75px;
+    font-size: 60px;
     font-family: Arial, Helvetica, sans-serif;
-    background-color: rgb(215, 215, 215);
-    color: rgb(0, 0, 0);
-    border-left: transparent;
-    border-right: transparent;
-    border: transparent;
+    color: white;
+    border: none;
+    border-bottom: 2px solid white;
+    background-color: rgb(30, 30, 30);
 }
 
 #menuItemContainer {
     margin-top: 80px;
     width: 90%;
     margin-left: 5%;
-    background-color: rgb(255, 255, 255);
+    
 }
 
 .menuGroup{
     border-width: 2px;
-    margin-top: 20px;
+    margin-top: 60px;
     margin-bottom: 10px;
     padding-left: 0px;
-    background-color: rgb(94, 94, 94);
 }
 
 #exitIcon {
     position: absolute;
+    margin: 30px;
     height: 60px;
     width: 60px;
     top: 5px;
     right: 5px;
+    filter: invert(100%);
 }
 
 #profileButton {
@@ -216,11 +282,6 @@ body {
     top: 1px;
 }
 
-#lockIcon {
-    width: 120px;
-    height: 120px;
-}
-
 #title {
     transition: 0.3s;
     font-size: 110px;
@@ -229,11 +290,174 @@ body {
     top: 50%;
 }
 
+.requestFormContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px 20px 50px;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 40px;
+    box-sizing: border-box;
+}
 
-.extraCashInform {
-    width: 100px;
-    height: 50px;
-    background-color: white;
+.requestSection {
+    margin-bottom: 40px;
+    padding: 12px 20px 0;
+}
+
+.requestPersonList {
+    display: grid;
+    gap: 12px;
+    max-height: 280px;
+    overflow-y: auto;
+    margin-top: 16px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.requestPersonItem,
+.requestSelectAllItem {
+    background-color: #f3f5fa;
+    color: #111111;
+    font-size: 30px;
+    border-radius: 32px;
+    padding: 14px 24px;
+    position: relative;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 64px;
+    width: 100%;
+}
+
+.requestPersonItem.selected,
+.requestSelectAllItem.selected {
+    background-color: #20c073;
+    color: #ffffff;
+}
+
+.requestLabelText {
+    margin-left: 0;
+    display: inline-block;
+}
+
+.requestPersonItem input,
+.requestSelectAllItem input {
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.requestPersonItem .checkmark,
+.requestSelectAllItem .checkmark {
+    display: none;
+}
+
+.splitSummary {
+    margin: 16px auto 0;
+    max-width: 760px;
+    font-size: 30px;
+    color: #e4e4e4;
+    text-align: center;
+    line-height: 1.4;
+}
+
+.sendFormContainer {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 50px 20px 20px 50px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.02);
+    border-radius: 40px;
+}
+
+.sendSection {
+    margin-bottom: 40px;
+    padding: 12px 20px 0;
+}
+
+.sendPersonList {
+    display: grid;
+    gap: 12px;
+    max-height: 280px;
+    overflow-y: auto;
+    margin-top: 16px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    border: 1px solid rgba(255, 255, 255, 0.14);
+}
+
+.sendPersonItem {
+    background-color: #f3f5fa;
+    color: #111111;
+    font-size: 30px;
+    border-radius: 32px;
+    padding: 14px 24px;
+    position: relative;
+    box-shadow: 0 10px 18px rgba(0, 0, 0, 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-height: 64px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sendPersonItem.selected {
+    background-color: #20c073;
+    color: #ffffff;
+}
+
+.sendLabelText {
+    margin-left: 0;
+    display: inline-block;
+}
+
+.sendPersonItem input {
+    position: absolute;
+    opacity: 0;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 0;
+    cursor: pointer;
+}
+
+.formBox {
+    position: relative;
+    height: 100px;
+    width: 90%;
+    max-width: 760px;
+    margin: 3% auto;
+    font-size: 44px;
+    border-radius: 60px;
+    text-align: center;
+    background-color: #ffffff;
+    color: #000000;
+    padding: 0 24px;
+}
+
+button.formbox {
+    display: block;
+    width: 70%;
+    max-width: 500px;
+    margin: 30px auto 0;
+    height: 100px;
+    font-size: 44px;
+    border-radius: 60px;
+    background-color: #ffffff;
+    color: #000000;
+    border: none;
+    cursor: pointer;
 }
 
 #sendReceiveA {
@@ -241,34 +465,87 @@ body {
     margin: 0px;
 }
 
-#historyButton {
-    width: 90%;
-    height: 100px;
-    border-radius: 40px;
-}
 
 .hidden {
     visibility: hidden;
+    pointer-events: none;
+}
+
+#confirmation {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 200;
+}
+
+#confirmation .dimmedScreen {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+#confirmationBox {
+    position: relative;
+    background-color: rgb(30, 30, 30);
+    border-radius: 30px;
+    width: min(520px, 90%);
+    padding: 32px 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+    z-index: 1;
+    text-align: center;
+}
+
+
+.confirmationButton {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 56px;
+    width: calc(50% - 16px);
+    margin: 0 8px;
+    border-radius: 28px;
+    font-size: 24px;
+    font-weight: 700;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+
+.confirmationButton:first-of-type {
+    background-color: #20c073;
+    color: white;
+}
+
+.confirmationButton:last-of-type {
+    background-color: #444;
+    color: white;
+}
+
+.confirmationButton:active {
+    transform: translateY(1px);
 }
 
 /* send page starts here */
 
 .formBox {
     position: relative;
-    height: 100px;
+    height: 120px;
     width: 90%;
     margin: 5%;
-    font-size: 40px;
-    border-radius: 40px;
+    font-size: 60px;
+    border-radius: 60px;
     text-align: center;
 }
 
 .formButton {
     position: relative;
-    height: 100px;
+    height: 120px;
     margin: 5%;
-    font-size: 40px;
-    border-radius: 40px;
+    font-size: 60px;
+    border-radius: 60px;
     text-align: center;
     width: 60%;
     left: 17%;
@@ -276,7 +553,6 @@ body {
 
 #sendDoneButton {
     width: 60%;
-    left: 17%;
 }
 
 .dimmedScreen {
@@ -291,28 +567,24 @@ body {
 
 #confirmationBox {
     position: absolute;
-    background-color: rgb(135, 135, 135);
-    border-radius: 40px;
+    background-color: rgb(40, 40, 40);
+    border-radius: 60px;
     width: 80%;
     margin: 10%;
-    height: 500px;
-    top: 400;
+    top: 400px;
+    padding-top: 15px;  
 }
-
-
 
 .confirmationButton {
     position: relative;
     text-align: center;
-    top: 170px;
-    height: 150px;
+    height: 120px;
     width: 40%;
     margin: 4%;
-    border-radius: 40px;
-    background-color: rgb(227, 227, 227);
-
-    font-size: 80px;
-    font-family: 'Times New Roman', Times, serif;
+    margin-top:60px;
+    border-radius: 60px;
+    font-size: 60px;
+    
 }
 
 /* account creation starts here*/
@@ -376,84 +648,84 @@ body {
 
 /*Alerts on index page*/
 #requestAlerts {
+    box-sizing: border-box;
     position: relative;
     text-align: center;
     width: 95%;
     margin: 2.5%;
-    border-radius: 40px;
-    background-color: rgb(227, 227, 227);
+    margin-top: 50px;
+    border-radius: 60px;
     color: black;
     padding: 5px;
     border-radius: 30px;
     font-size: 80px;
-    font-family: 'Times New Roman', Times, serif;
 }
 
 .alert {
+    box-sizing: border-box;
     position: relative;
     text-align: center;
-    width: 95%;
-    padding: 10px;
-    left: 1%;
-    border-radius: 40px;
-    background-color: rgb(255, 255, 255);
+    display: block;
+    width: 100%;
+    padding: 30px;
+    border-radius: 60px;
+    box-shadow: 0px 0px 5px rgba(255, 255, 255, 0.75);
     color: rgb(255, 255, 255);
 
-    border-radius: 30px;
-    font-size: 65px;
-    font-family: 'Times New Roman', Times, serif;
-    background-color: rgb(24, 24, 24);
+    font-size: 60px;
+    background-color: rgb(30, 30, 30);
     overflow: scroll;
 }
 
 /* transaction history page */
 .transactionDate {
     position: absolute;
-    color: rgb(0, 0, 0);
     font-size: 30px;
     margin: 10px;
     bottom: 0px;
-    right: 10px;
+    right: 30px;
 }
 
 .transactionBalance {
     position: absolute;
-    color: rgb(0, 0, 0);
     font-size: 30px;
     margin: 10px;
     bottom: 0px;
-    left: 10px;
+    left: 30px;
 }
 
 .exDetails {
-    background-color: #ffffff55;
-    width: 100%;
-    height: 40px;
-    border-radius: 30px;
+    border-top: 2px solid rgb(89, 89, 89);
+    width: 95%;
+    margin-left: 2.5%;
+    height: 20px;
+    color: white;
+    margin-top: 20px;
+    padding: 5px;
 }
 
 .alertButton {
     position: relative;
     text-align: center;
     top: 5px;
-    height: 100px;
+    height: 60;
     width: 30%;
     margin: 5px;
-    border-radius: 20px;
+    border-radius: 30px;
     background-color: rgb(227, 227, 227);
 
     font-size: 40px;
-    font-family: 'Times New Roman', Times, serif;
 }
 
 #filtersContainer {
-    background-color: rgba(26, 26, 26, 0.982);
+    background-color: rgba(26, 26, 26, 0.98);
     width: 80%;
     height: 100%;
     position: absolute;
     right: 0px;
     top: 0px;
     z-index: 99;
+    padding-top: 30px;
 }
 
 #filterIcon.open {
@@ -482,34 +754,109 @@ body {
 }
 
 #filtersArea {
-    position: absolute;
-    height: 90%;
+    position: relative;
+    height: auto;
     width: 90%;
-    top: 150px;
-    left: 4%;
+    margin-left: 5%;
+    margin-right: 5%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#filtersArea form {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+#filtersArea form > div:first-child {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
 }
 
 #filtersTitle {
-    position: absolute;
-    top: 10px;
-    left: 110px;
+    position: relative;
+    margin: 0;
+    margin-bottom: 10px;
     color: rgb(255, 255, 255);
-    font-size: 80px;
+    font-size: 45px;
+    font-weight: bold;
+}
+
+#filtersArea .Btext {
+    color: rgb(255, 255, 255);
+    font-size: 30px;
+    margin-bottom: 15px;
+    font-weight: 500;
 }
 
 .filterLabel {
-    font-size: 50px;
+    font-size: 30px;
     color: rgb(255, 255, 255);
     margin-bottom: 15px;
 }
 
+#filtersArea .container {
+    background-color: #f3f5fa;
+    border-radius: 18px;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+    padding-left: 20px;
+}
+
+#filtersArea .container.selected {
+    background-color: #20c073;
+    color: white;
+}
+
+#filtersArea .container:active {
+    background-color: #e8ecf5;
+}
+
+#filtersArea .container.selected:active {
+    background-color: #1a9a5a;
+}
+
+#filtersArea select {
+    background-color: #f3f5fa;
+    border: none;
+    border-radius: 18px;
+    padding: 16px 20px;
+    font-size: 30px;
+    color: #333;
+    cursor: pointer;
+    appearance: none;
+    padding-right: 40px;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='%23333' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 15px center;
+    background-size: 20px;
+}
+
 #filterSubmit {
-    border-radius: 20px;
-    font-size: 45px;
-    margin: 10px;
-    width: 160px;
+    border-radius: 18px;
+    font-size: 30px;
+    padding: 16px 30px;
+    border: none;
+    background-color: #20c073;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
     text-align: center;
-    color: black;
+    align-self: flex-start;
+    margin-top: 10px;
+}
+
+#filterSubmit:active {
+    background-color: #1a9a5a;
 }
 
 /* The container */
@@ -520,7 +867,6 @@ body {
     margin-bottom: 25px;
     cursor: pointer;
     font-size: 45px;
-    color: rgb(255, 255, 255);
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none;
@@ -547,10 +893,6 @@ body {
 }
 
 /* On mouse-over, add a grey background color */
-.container:hover input~.checkmark {
-    background-color: #ccc;
-}
-
 /* When the checkbox is checked, add a blue background */
 .container input:checked~.checkmark {
     background-color: #2196F3;
@@ -566,6 +908,30 @@ body {
 /* Show the checkmark when checked */
 .container input:checked~.checkmark:after {
     display: block;
+}
+
+.requestPersonList {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    max-height: 260px;
+    overflow-y: auto;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.requestPersonItem {
+    font-size: 40px;
+    padding-left: 55px;
+    margin-bottom: 10px;
+    color: black;
+    box-sizing: border-box;
+}
+
+.requestPersonItem .checkmark {
+    height: 30px;
+    width: 30px;
+    top: 6px;
 }
 
 /* Style the checkmark/indicator */

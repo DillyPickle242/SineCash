@@ -9,25 +9,31 @@
         <?php include_once 'header.php'; ?>
     </header>
 
-    <form id="requestForm" action="requesting.php" method="post">
-        <div>
+    <form id="requestForm" action="requesting.php" method="post" class="requestFormContainer">
+        <div class="requestSection">
             <div class="Btext">
                 Who are you requesting from?
             </div>
-            <select name="requestPersonSelect" id="requestPersonSelect" class="formBox">
+            <label class="container requestPersonItem requestSelectAllItem">
+                <span class="requestLabelText">Select All</span>
+                <input type="checkbox" id="requestSelectAll">
+                <span class="checkmark"></span>
+            </label>
+            <div id="requestPersonList" class="requestPersonList">
                 <?php include_once 'memberDropDownMenu.php';
                 include_once 'sessionStart.php';
-                makeDropDown($_SESSION['id']);
+                makeRequestCheckboxList($_SESSION['id']);
                 ?>
-            </select>
+            </div>
         </div>
-        <div>
+        <div class="requestSection">
             <div class="Btext">
                 How much would you like to request?
             </div>
             <input name="requestCashAmount" id="requestCashAmount" class="formBox" type="number" step="0.01" min=0.01 max=1000000>
+            <div id="splitSummary" class="splitSummary">Choose people to request from and the amount will be split evenly.</div>
         </div>
-        <div>
+        <div class="requestSection">
             <div class="Btext">
                 Note: for...
             </div>

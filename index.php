@@ -35,27 +35,7 @@
     }
     ?>
     <div id="cashTotalContainer">
-        <?php
-        //Custom Image
-
-        $sql = "SELECT backgroundImg FROM people WHERE ID=?";
-        $stmt = $db->prepare($sql);
-        if (!$stmt) {
-            print("error: " . $db->error);
-        }
-        $stmt->bind_param("i", $id);
-        $id = $_SESSION['id'];
-
-        if (!$stmt->execute()) {
-            print("execute error: " . $db->error);
-        }
-        $result = $stmt->get_result();
-        $imgRow = $result->fetch_assoc(); //row = totalCash array
-        $backgroundFile = $imgRow['backgroundImg'];
-
-        print_r("<img id='cashBackground' src='images\-$backgroundFile.gif'>")
-
-        ?>
+    
         <?php
         $sql = "SELECT parent FROM people WHERE ID=?";
         $stmt = $db->prepare($sql);
@@ -142,7 +122,7 @@
                 print_r("Your total cash is:");
             }
             if ($parent == '1' && $locked == 'unlocked') {
-                print_r("You have infinite cash! <br> Your family code is:");
+                print_r("Your family code is:");
             } else if ($parent == '1' && $locked == 'locked') {
                 print_r("You have infinite cash!");
             }

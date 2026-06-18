@@ -15,23 +15,25 @@
         <div id='filtersArea'>
             <form action='transactionHistoryPage.php' method='post'>
                 <div>
-                    <label class="container">Send
+                    <div class="Btext">Transaction Type</div>
+                    <label class="container">
                         <input type="radio" name='transactionType' value="Send">
                         <span class="checkmark"></span>
+                        <span style="margin-left: 10px;">Send</span>
                     </label>
-                    <label class="container">Request
+                    <label class="container">
                         <input type="radio" name='transactionType' value="Request">
                         <span class="checkmark"></span>
+                        <span style="margin-left: 10px;">Request</span>
                     </label>
-                    <label class="container">Allowance
+                    <label class="container">
                         <input type="radio" name='transactionType' value="Allowance">
                         <span class="checkmark"></span>
+                        <span style="margin-left: 10px;">Allowance</span>
                     </label>
                 </div>
                 <div>
-                    <div class="Btext">
-                        Search by person
-                    </div>
+                    <div class="Btext">Search by person</div>
                     <select name="searchID" id="searchID" class="formBox">
                         <?php include_once 'memberDropDownMenu.php'; 
                         include_once 'sessionStart.php';
