@@ -148,7 +148,6 @@ html {
     margin: 20px 0;
     padding: 20px;
     border-radius: 16px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .Dtext {
@@ -332,6 +331,7 @@ html {
     width: 100%;
 }
 
+
 .requestPersonItem.selected,
 .requestSelectAllItem.selected {
     background-color: #20c073;
@@ -432,19 +432,6 @@ html {
     cursor: pointer;
 }
 
-.formBox {
-    position: relative;
-    height: 100px;
-    width: 90%;
-    max-width: 760px;
-    margin: 3% auto;
-    font-size: 44px;
-    border-radius: 60px;
-    text-align: center;
-    background-color: #ffffff;
-    color: #000000;
-    padding: 0 24px;
-}
 
 button.formbox {
     display: block;
@@ -534,10 +521,16 @@ button.formbox {
     position: relative;
     height: 120px;
     width: 90%;
-    margin: 5%;
+    margin-top: 15px;
+    margin-bottom: 50px;
+    margin-left: 2.5%;
     font-size: 60px;
     border-radius: 60px;
     text-align: center;
+}
+
+.signlogbox {
+    margin-left: 5%;
 }
 
 .formButton {
@@ -924,7 +917,6 @@ button.formbox {
     max-height: 260px;
     overflow-y: auto;
     margin-top: 10px;
-    margin-left: 20px;
 }
 
 .requestPersonItem {

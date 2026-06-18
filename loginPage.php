@@ -18,13 +18,13 @@
             <div class="Btext">
             Please enter your first name
             </div>
-            <input name="usernameLogin" id="usernameLogin" class="formBox">
+            <input name="usernameLogin" id="usernameLogin" class="formBox signlogbox">
         </div>
         <div>
             <div class="Btext">
             Please enter your password
             </div>
-            <input type="password" name="passwordLogin" id="passwordLogin" class="formBox">
+            <input type="password" name="passwordLogin" id="passwordLogin" class="formBox signlogbox">
         </div>
         <button id="loginDoneButton" class="formbox">Login</button>
     </form>

@@ -19,25 +19,25 @@
             <div class="Btext">
             Please enter your first name
             </div>
-            <input name="usernameCreate" id="usernameCreate" class="formBox">
+            <input name="usernameCreate" id="usernameCreate" class="formBox signlogbox">
         </div>
         <div>
             <div class="Btext">
             Please enter your email
             </div>
-            <input type="email" name="emailCreate" id="emailCreate" class="formBox">
+            <input type="email" name="emailCreate" id="emailCreate" class="formBox signlogbox">
         </div>
         <div>
             <div class="Btext">
             Please create a password
             </div>
-            <input type="password" name="passwordCreate" id="passwordCreate" class="formBox">
+            <input type="password" name="passwordCreate" id="passwordCreate" class="formBox signlogbox">
         </div>
         <div>
             <div class="Btext">
             Please re-enter you password
             </div>
-            <input type="password" name="passwordCreateCheck" id="passwordCreateCheck" class="formBox">
+            <input type="password" name="passwordCreateCheck" id="passwordCreateCheck" class="formBox signlogbox">
         </div>
         <button id="signupDoneButton" class="formbox">create account</button>
     </form>
