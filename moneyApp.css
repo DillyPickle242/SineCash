@@ -882,6 +882,14 @@ button.formbox {
     width: 0;
 }
 
+/* Override for send/request person items - make inputs fill label for mobile touch */
+.container.sendPersonItem input,
+.container.requestPersonItem input,
+.container.requestSelectAllItem input {
+    height: 100% !important;
+    width: 100% !important;
+}
+
 /* Create a custom checkbox */
 .checkmark {
     position: absolute;
