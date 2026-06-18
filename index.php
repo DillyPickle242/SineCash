@@ -142,15 +142,9 @@
             ?> </p>
     </div>
     <div id="sendReceiveA">
-        <a href="sendPage.php">
-            <button class="hsButton" id="sendButton"> Send </button>
-        </a>
-        <a href="requestPage.php">
-            <button class="hsButton" id="requestButton"> Request </button>
-        </a>
-        <a href="transactionHistoryPage.php">
-            <button class="hsButton" id="historyButton">Transaction History</button>
-        </a>
+        <a href="sendPage.php" class="hsButton" id="sendButton">Send</a>
+        <a href="requestPage.php" class="hsButton" id="requestButton">Request</a>
+        <a href="transactionHistoryPage.php" class="hsButton" id="historyButton">Transaction History</a>
     </div>
     <div id="requestAlerts">
         <?php
