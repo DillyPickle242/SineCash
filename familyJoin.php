@@ -1,5 +1,6 @@
 <html>
 <header>
+    <link rel="stylesheet" href="moneyApp.css?<?php echo time(); ?>">
     <div id="topBar">
         <div id="title" class="Atext"> SineCash </div>
     </div>
