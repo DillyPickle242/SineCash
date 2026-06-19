@@ -15,21 +15,10 @@
             <form action='transactionHistoryPage.php' method='post'>
                 <div>
                     <div class="Btext">Transaction Type</div>
-                    <label class="container">
-                        <input type="radio" name='transactionType' value="Send">
-                        <span class="checkmark"></span>
-                        <span style="margin-left: 10px;">Send</span>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name='transactionType' value="Request">
-                        <span class="checkmark"></span>
-                        <span style="margin-left: 10px;">Request</span>
-                    </label>
-                    <label class="container">
-                        <input type="radio" name='transactionType' value="Allowance">
-                        <span class="checkmark"></span>
-                        <span style="margin-left: 10px;">Allowance</span>
-                    </label>
+                    <div class="filterDiv" data-value="Send">Send</div>
+                    <div class="filterDiv" data-value="Request">Request</div>
+                    <div class="filterDiv" data-value="Allowance">Allowance</div>
+                    <input type="hidden" name="transactionType" id="hiddenTransactionType" value="">
                 </div>
                 <div>
                     <div class="Btext">Search by person</div>

@@ -1,18 +1,18 @@
-//sending
+//SEND PAGE - div-based radio selection
 const sendDoneButton = document.getElementById("sendDoneButton")
 const sendForm = document.getElementById("sendForm")
 if (sendDoneButton && sendForm) {
-    const sendPersonRadios = () => Array.from(document.querySelectorAll('input[name="sendPersonSelect"]'))
+    const sendPersonList = document.getElementById("sendPersonList")
     let sendConfirmed = false
 
-    sendPersonRadios().forEach(radio => {
-        radio.addEventListener('change', () => {
-            sendPersonRadios().forEach(r => {
-                if (r.parentElement) {
-                    r.parentElement.classList.toggle('selected', r.checked)
-                }
-            })
-        })
+    const getSendPersonDivs = () => Array.from(sendPersonList.querySelectorAll('.sendPersonItem'))
+
+    sendPersonList.addEventListener('click', (event) => {
+        const clickedDiv = event.target.closest('.sendPersonItem')
+        if (!clickedDiv) return
+
+        getSendPersonDivs().forEach(div => div.classList.remove('selected'))
+        clickedDiv.classList.add('selected')
     })
 
     sendForm.addEventListener('submit', (event) => {
@@ -24,11 +24,12 @@ if (sendDoneButton && sendForm) {
         event.preventDefault()
         const amountValue = document.getElementById('sendCashAmount').value
         const noteValue = document.getElementById('sendNote').value
-        const selectedRadio = document.querySelector('input[name="sendPersonSelect"]:checked')
+        const selectedDiv = sendPersonList.querySelector('.sendPersonItem.selected')
 
         if (amountValue && noteValue) {
-            if (selectedRadio) {
-                const selectedName = selectedRadio.parentElement.textContent.trim()
+            if (selectedDiv) {
+                const selectedName = selectedDiv.textContent.trim()
+                const selectedValue = selectedDiv.getAttribute('data-value')
                 document.getElementById("confirmation").classList.remove("hidden")
                 document.getElementById('sendConfirm').innerHTML = "Are you sure you'd like to send $" + amountValue + " to " + selectedName + " for " + noteValue + "?"
             } else {
@@ -38,12 +39,22 @@ if (sendDoneButton && sendForm) {
             alert("Please fill in ALL fields or check that you only inputted numbers in the money field")
         }
     })
+
     document.getElementById("sendConfirmYes").addEventListener('click', (event) => {
         event.preventDefault()
+        const selectedDiv = sendPersonList.querySelector('.sendPersonItem.selected')
+        if (selectedDiv) {
+            const input = document.createElement('input')
+            input.type = 'hidden'
+            input.name = 'sendPersonSelect'
+            input.value = selectedDiv.getAttribute('data-value')
+            sendForm.appendChild(input)
+        }
         sendConfirmed = true
         document.getElementById("confirmation").classList.add("hidden")
         sendForm.submit()
     })
+
     document.getElementById("sendConfirmNo").addEventListener('click', (event) => {
         event.preventDefault()
         sendConfirmed = false
@@ -51,37 +62,28 @@ if (sendDoneButton && sendForm) {
     })
 }
 
-//requesting
+//REQUEST PAGE - div-based checkbox selection
 const requestDoneButton = document.getElementById("requestDoneButton")
 const requestForm = document.getElementById("requestForm")
 if (requestDoneButton && requestForm) {
-    const requestSelectAll = document.getElementById("requestSelectAll")
-    const requestCheckboxes = () => Array.from(document.querySelectorAll('input[name="requestPersonSelect[]"]'))
+    const requestSelectAllDiv = document.getElementById("requestSelectAll")
+    const requestPersonList = document.getElementById("requestPersonList")
     let requestConfirmed = false
 
-    const updateSelectAllState = () => {
-        if (!requestSelectAll) return
-        const checkboxes = requestCheckboxes()
-        requestSelectAll.checked = checkboxes.length > 0 && checkboxes.every(checkbox => checkbox.checked)
-    }
+    const getRequestPersonDivs = () => Array.from(requestPersonList.querySelectorAll('.requestPersonItem'))
 
-    if (requestSelectAll) {
-        requestSelectAll.addEventListener('change', () => {
-            requestCheckboxes().forEach(checkbox => {
-                checkbox.checked = requestSelectAll.checked
-                if (checkbox.parentElement) {
-                    checkbox.parentElement.classList.toggle('selected', checkbox.checked)
-                }
-            })
-            updateSplitSummary()
-        })
+    const updateSelectAllState = () => {
+        if (!requestSelectAllDiv) return
+        const divs = getRequestPersonDivs()
+        const allSelected = divs.length > 0 && divs.every(div => div.classList.contains('selected'))
+        requestSelectAllDiv.classList.toggle('selected', allSelected)
     }
 
     const splitSummary = document.getElementById('splitSummary')
 
     const updateSplitSummary = () => {
         const amountValue = parseFloat(document.getElementById('requestCashAmount').value)
-        const selected = Array.from(document.querySelectorAll('input[name="requestPersonSelect[]"]:checked'))
+        const selected = getRequestPersonDivs().filter(div => div.classList.contains('selected'))
         const count = selected.length
 
         if (count === 0) {
@@ -98,14 +100,24 @@ if (requestDoneButton && requestForm) {
         splitSummary.textContent = 'Split evenly among ' + count + ' ' + (count === 1 ? 'person' : 'people') + ': $' + splitAmount + ' each.'
     }
 
-    requestCheckboxes().forEach(checkbox => {
-        checkbox.addEventListener('change', () => {
-            if (checkbox.parentElement) {
-                checkbox.parentElement.classList.toggle('selected', checkbox.checked)
-            }
-            updateSelectAllState()
+    if (requestSelectAllDiv) {
+        requestSelectAllDiv.addEventListener('click', () => {
+            requestSelectAllDiv.classList.toggle('selected')
+            const shouldSelect = requestSelectAllDiv.classList.contains('selected')
+            getRequestPersonDivs().forEach(div => {
+                div.classList.toggle('selected', shouldSelect)
+            })
             updateSplitSummary()
         })
+    }
+
+    requestPersonList.addEventListener('click', (event) => {
+        const clickedDiv = event.target.closest('.requestPersonItem')
+        if (!clickedDiv) return
+
+        clickedDiv.classList.toggle('selected')
+        updateSelectAllState()
+        updateSplitSummary()
     })
 
     document.getElementById('requestCashAmount').addEventListener('input', updateSplitSummary)
@@ -119,11 +131,11 @@ if (requestDoneButton && requestForm) {
         event.preventDefault()
         const amountValue = document.getElementById('requestCashAmount').value
         const noteValue = document.getElementById('requestNote').value
-        const selected = Array.from(document.querySelectorAll('input[name="requestPersonSelect[]"]:checked'))
+        const selected = getRequestPersonDivs().filter(div => div.classList.contains('selected'))
 
         if (amountValue && noteValue) {
             if (selected.length > 0) {
-                const selectedNames = selected.map(checkbox => checkbox.parentElement.textContent.trim()).join(', ')
+                const selectedNames = selected.map(div => div.textContent.trim()).join(', ')
                 const splitAmount = (parseFloat(amountValue) / selected.length).toFixed(2)
                 document.getElementById("confirmation").classList.remove("hidden")
                 document.getElementById('requestConfirm').innerHTML = "Are you sure you'd like to request $" + amountValue + " split evenly ($" + splitAmount + " each) from " + selectedNames + " for " + noteValue + "?"
@@ -135,16 +147,41 @@ if (requestDoneButton && requestForm) {
             alert("Please fill in ALL fields or check that you only inputted numbers in the money field")
         }
     })
+
     document.getElementById("requestConfirmYes").addEventListener('click', (event) => {
         event.preventDefault()
+        const selected = getRequestPersonDivs().filter(div => div.classList.contains('selected'))
+        selected.forEach(div => {
+            const input = document.createElement('input')
+            input.type = 'hidden'
+            input.name = 'requestPersonSelect[]'
+            input.value = div.getAttribute('data-value')
+            requestForm.appendChild(input)
+        })
         requestConfirmed = true
         document.getElementById("confirmation").classList.add("hidden")
         requestForm.submit()
     })
+
     document.getElementById("requestConfirmNo").addEventListener('click', (event) => {
         event.preventDefault()
         requestConfirmed = false
         document.getElementById("confirmation").classList.add("hidden")
+    })
+}
+
+//TRANSACTION HISTORY - div-based filter selection
+const filterDivs = document.querySelectorAll('.filterDiv')
+if (filterDivs.length > 0) {
+    filterDivs.forEach(div => {
+        div.addEventListener('click', () => {
+            filterDivs.forEach(d => d.classList.remove('selected'))
+            div.classList.add('selected')
+            const hiddenInput = div.closest('form')?.querySelector('#hiddenTransactionType')
+            if (hiddenInput) {
+                hiddenInput.value = div.getAttribute('data-value')
+            }
+        })
     })
 }
 
@@ -162,6 +199,7 @@ if (signupForm) {
         }
     })
 }
+
     //entering family name
     const familySetupForm = document.getElementById("familySetup");
     const familyNameInput = document.getElementById("familyName")
@@ -192,22 +230,6 @@ if (document.getElementById('filterIcon')) {
         document.getElementById("filtersContainer").classList.toggle("hidden")
         document.getElementById("filterIcon").classList.toggle("open")
         document.getElementById("filterIcon").classList.toggle("closed")
-    })
-
-    // Handle transaction type filter selection styling
-    const transactionTypeRadios = document.querySelectorAll('input[name="transactionType"]')
-    transactionTypeRadios.forEach(radio => {
-        radio.addEventListener('change', () => {
-            transactionTypeRadios.forEach(r => {
-                if (r.parentElement) {
-                    r.parentElement.classList.toggle('selected', r.checked)
-                }
-            })
-        })
-        // Initialize styling on page load
-        if (radio.checked && radio.parentElement) {
-            radio.parentElement.classList.add('selected')
-        }
     })
 }
 

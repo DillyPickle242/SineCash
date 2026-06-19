@@ -13,11 +13,9 @@
             <div class="Btext">
                 Who are you requesting from?
             </div>
-            <label class="container requestPersonItem requestSelectAllItem">
-                <span class="requestLabelText">Select All</span>
-                <input type="checkbox" id="requestSelectAll">
-                <span class="checkmark"></span>
-            </label>
+            <div class="requestPersonItem requestSelectAllItem" id="requestSelectAll">
+                <span>Select All</span>
+            </div>
             <div id="requestPersonList" class="requestPersonList">
                 <?php include_once 'memberDropDownMenu.php';
                 include_once 'sessionStart.php';

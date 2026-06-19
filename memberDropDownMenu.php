@@ -72,7 +72,7 @@ function makeSendCardList($Excludeid){
     while ($row = $result->fetch_assoc()) {
         $username = htmlspecialchars($row['username']);
         $id = $row['ID'];
-        print_r("<label class='container sendPersonItem'><span class='sendLabelText'>$username</span><input type='radio' name='sendPersonSelect' value='$id' class='sendPersonRadio'></label>");
+        print_r("<div class='sendPersonItem' data-value='$id'>$username</div>");
     }
 }
 
@@ -100,6 +100,6 @@ function makeRequestCheckboxList($Excludeid){
     while ($row = $result->fetch_assoc()) {
         $username = htmlspecialchars($row['username']);
         $id = $row['ID'];
-        print_r("<label class='container requestPersonItem'><span class='requestLabelText'>$username</span><input type='checkbox' name='requestPersonSelect[]' value='$id' class='requestPersonCheckbox'></label>");
+        print_r("<div class='requestPersonItem' data-value='$id'>$username</div>");
     }
 }

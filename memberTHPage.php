@@ -14,18 +14,10 @@
             <div id='filtersArea'>
                 <form action='memberTHPage.php' method='post'>
                     <div>
-                        <label class="container">Send
-                            <input type="radio" name='transactionType' value="send">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Request
-                            <input type="radio" name='transactionType' value="request">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="container">Allowance
-                            <input type="radio" name='transactionType' value="allowance">
-                            <span class="checkmark"></span>
-                        </label>
+                        <div class="filterDiv" data-value="send">Send</div>
+                        <div class="filterDiv" data-value="request">Request</div>
+                        <div class="filterDiv" data-value="allowance">Allowance</div>
+                        <input type="hidden" name="transactionType" id="hiddenTransactionType" value="">
                     </div>
                     <div>
                         <div class="Btext">
