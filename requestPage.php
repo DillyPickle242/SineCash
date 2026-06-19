@@ -50,7 +50,7 @@
     </form>
 
 
-    <script src="moneyApp.js"></script>
+    <script src="moneyApp.js?<?php echo time(); ?>"></script>
 </body>
 
 </html>
