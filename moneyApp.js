@@ -166,6 +166,13 @@ if (requestDoneButton && requestForm) {
             input.value = div.getAttribute('data-value')
             requestForm.appendChild(input)
         })
+            if (requestIncludeSelf.classList.contains('selected')) {
+            const selfInput = document.createElement('input')
+            selfInput.type = 'hidden'
+            selfInput.name = 'requestIncludeSelf'
+            selfInput.value = '1'
+            requestForm.appendChild(selfInput)
+            }
         requestConfirmed = true
         document.getElementById("confirmation").classList.add("hidden")
         requestForm.submit()

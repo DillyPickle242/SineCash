@@ -16,7 +16,8 @@ if (!is_array($selectedPeople)) {
 }
 
 $selectedPeople = array_filter(array_map('intval', $selectedPeople));
-$count = count($selectedPeople);
+$includeSelf = isset($_POST['requestIncludeSelf']) ? 1 : 0;
+$count = count($selectedPeople) + $includeSelf;
 
 if ($count > 0 && $amount > 0) {
     $cents = round($amount * 100);
