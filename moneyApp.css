@@ -48,6 +48,20 @@ html {
 
 }
 
+#requestSelectAll{
+ width: 44%;
+}
+
+#requestIncludeSelf {
+    width: 44%;
+}
+
+#requestingOptions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
 .topMessageShown {
     padding: 35px;
     box-sizing: border-box;

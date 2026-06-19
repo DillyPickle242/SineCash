@@ -13,8 +13,13 @@
             <div class="Btext">
                 Who are you requesting from?
             </div>
-            <div class="requestPersonItem requestSelectAllItem" id="requestSelectAll">
-                <span>Select All</span>
+            <div id="requestingOptions">
+                <div class="requestPersonItem requestSelectAllItem" id="requestSelectAll">
+                    <span>Select All</span>
+                </div>
+                <div class="requestPersonItem requestSelectAllItem" id="requestIncludeSelf">
+                    <span>Include Self</span>
+                </div>
             </div>
             <div id="requestPersonList" class="requestPersonList">
                 <?php include_once 'memberDropDownMenu.php';
@@ -22,6 +27,7 @@
                 makeRequestCheckboxList($_SESSION['id']);
                 ?>
             </div>
+            
         </div>
         <div class="requestSection">
             <div class="Btext">

@@ -84,7 +84,8 @@ if (requestDoneButton && requestForm) {
     const updateSplitSummary = () => {
         const amountValue = parseFloat(document.getElementById('requestCashAmount').value)
         const selected = getRequestPersonDivs().filter(div => div.classList.contains('selected'))
-        const count = selected.length
+        // number of people selected
+        const count = selected.length + (requestIncludeSelf.classList.contains('selected') ? 1 : 0)
 
         if (count === 0) {
             splitSummary.textContent = 'Choose people to request from and the amount will be split evenly.'
@@ -116,6 +117,13 @@ if (requestDoneButton && requestForm) {
         if (!clickedDiv) return
 
         clickedDiv.classList.toggle('selected')
+        updateSelectAllState()
+        updateSplitSummary()
+    })
+
+    const requestIncludeSelf = document.getElementById("requestIncludeSelf")
+    requestIncludeSelf.addEventListener('click', () => {
+        requestIncludeSelf.classList.toggle('selected')
         updateSelectAllState()
         updateSplitSummary()
     })
