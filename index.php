@@ -124,7 +124,7 @@
             if ($parent == '1' && $locked == 'unlocked') {
                 print_r("Your family code is:");
             } else if ($parent == '1' && $locked == 'locked') {
-                print_r("You have infinite cash!");
+                print_r("Your Family is Locked");
             }
             ?></p>
         <p class='Atext' id="totalCashNum">
@@ -136,7 +136,7 @@
                 print_r("$familyCode");
             } else if ($parent == '1' && $locked == 'locked') {
                 print_r("<img id='lockIcon' src='images/lockIcon.png'>");
-                print_r("<div class='Atext' id='lockedFamilyDesc'> Your family is locked. <br> Unlock it in the <a id='famEditPageLink' href='profilePage.php'>family edit page.</a> </div>");
+                print_r("<div class='Atext' id='lockedFamilyDesc'>Unlock it in the <a id='famEditPageLink' href='profilePage.php'>family edit page.</a> </div>");
             }
 
             ?> </p>
