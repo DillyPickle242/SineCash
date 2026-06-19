@@ -97,7 +97,7 @@ if (requestDoneButton && requestForm) {
             return
         }
 
-        const splitAmount = (amountValue / count).toFixed(2)
+        const splitAmount = (amountValue / count).toFixed(2)    
         splitSummary.textContent = 'Split evenly among ' + count + ' ' + (count === 1 ? 'person' : 'people') + ': $' + splitAmount + ' each.'
     }
 
@@ -140,11 +140,11 @@ if (requestDoneButton && requestForm) {
         const amountValue = document.getElementById('requestCashAmount').value
         const noteValue = document.getElementById('requestNote').value
         const selected = getRequestPersonDivs().filter(div => div.classList.contains('selected'))
-
+        const count = selected.length + (requestIncludeSelf.classList.contains('selected') ? 1 : 0)
         if (amountValue && noteValue) {
             if (selected.length > 0) {
                 const selectedNames = selected.map(div => div.textContent.trim()).join(', ')
-                const splitAmount = (parseFloat(amountValue) / selected.length).toFixed(2)
+                const splitAmount = (parseFloat(amountValue) / count).toFixed(2)
                 document.getElementById("confirmation").classList.remove("hidden")
                 document.getElementById('requestConfirm').innerHTML = "Are you sure you'd like to request $" + amountValue + " split evenly ($" + splitAmount + " each) from " + selectedNames + " for " + noteValue + "?"
                 updateSplitSummary()
